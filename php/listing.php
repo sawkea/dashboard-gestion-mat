@@ -7,5 +7,5 @@ $twig = new \Twig\Environment($loader, [
 ]);
 
 
-$template = $twig->load('listing.html.twig');
+$template = $twig->load('pages/listing.html.twig');
 echo $template->render();

@@ -7,5 +7,6 @@ $twig = new \Twig\Environment($loader, [
 ]);
 
 
-$template = $twig->load('fiche-materiel.html.twig');
+
+$template = $twig->load('pages/fiche-materiel.html.twig');
 echo $template->render();

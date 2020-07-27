@@ -7,5 +7,5 @@ $twig = new \Twig\Environment($loader, [
 ]);
 
 
-$template = $twig->load('ajout.html.twig');
+$template = $twig->load('pages/ajout.html.twig');
 echo $template->render();
