@@ -3,9 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{% block title %}DGMA{% endblock title %}</title>
 </head>
 <body>
-    <h1>bonjour</h1>
+    <!-- Header -->
+    <header>
+        
+    </header>
+    <!-- Main -->
+    <main>
+        {% block content %}{% endblock content %}
+    </main>
+    <!-- Footer -->
+    <footer>
+        {% block footer %}{% endblock footer %}
+    </footer>
+    <!-- Javascript -->
+        {% block javascript %}
+            <script src="js/script.js"></script>
+        {% endblock javascript %}
 </body>
 </html>
