@@ -26,11 +26,11 @@ Création des pages
 * ajout.html.twig
 
 ex: page ajout.html.twig
-{% extends "base.html.twig" %}
-{% block title %}Listing{% endblock title %}
-{% block content %}
-    <h1>Ajout d'un nouveau matériel</h1>
-{% endblock content %}
+    {% extends "base.html.twig" %}
+    {% block title %}Listing{% endblock title %}
+    {% block content %}
+        <h1>Ajout d'un nouveau matériel</h1>
+    {% endblock content %}
 
 ### dossier php
 Création des pages
@@ -39,14 +39,14 @@ Création des pages
 * fiche-materiel.php
 
 ex: page ajout.php
-<?php 
-require_once 'vendor/autoload.php';
-$loader = new \Twig\Loader\FilesystemLoader('templates');
-$twig = new \Twig\Environment($loader, [
-    'cache' => false,
-]);
-$template = $twig->load('pages/ajout.html.twig');
-echo $template->render();
+    <?php 
+    require_once 'vendor/autoload.php';
+    $loader = new \Twig\Loader\FilesystemLoader('templates');
+    $twig = new \Twig\Environment($loader, [
+        'cache' => false,
+    ]);
+    $template = $twig->load('pages/ajout.html.twig');
+    echo $template->render();
 
 ### dossier js
 * création de la page script.js
@@ -55,8 +55,8 @@ echo $template->render();
 * Effectuer les chemins de relations entre fichiers twig et php 
 
 ex: 
-$template = $twig->load('pages/ajout.html.twig');
-echo $template->render();
+    $template = $twig->load('pages/ajout.html.twig');
+    echo $template->render();
 
 ### Sass
 Mise en place de sass avec fichier style.scss
