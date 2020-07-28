@@ -62,8 +62,8 @@ echo $template->render();
 Mise en place de sass avec fichier style.scss
 
 ## Création du form login
-
-
+* Création du formulaire de login en HTML avec style 
+* Création du logo
 
 
 -------------------------------------------
