@@ -99,10 +99,58 @@ body h2 {
 }
 
 .fiche-produit {
+  background-color: var(--color-secondary);
+  padding: 1.25rem;
+  border-radius: 0.8rem;
+  font-family: var(--font-principal);
   margin-top: 3rem;
   max-width: 50rem;
   margin-left: auto;
   margin-right: auto;
+}
+.fiche-produit h2 {
+  color: var(--color-three);
+  font-size: 1.525rem;
+  line-height: 3rem;
+  letter-spacing: 3px;
+}
+.fiche-produit .bg-color {
+  background-color: var(--color-first);
+  height: 3rem;
+  border-radius: 0.3rem;
+  margin-bottom: 1rem;
+}
+.fiche-produit form button {
+  margin-top: 1.5rem;
+  background-color: var(--color-first);
+  border: none;
+  color: var(--color-three);
+  font-weight: 700;
+}
+.fiche-produit form button:hover {
+  background-color: var(--color-for);
+  color: var(--color-three);
+}
+.fiche-produit form div > a {
+  font-family: var(--font-principal);
+  font-weight: 700;
+  text-decoration: none;
+}
+.fiche-produit form .fa-file-alt, .fiche-produit form .fa-receipt {
+  font-size: 1.5rem;
+  color: var(--color-for);
+}
+.fiche-produit form #download > div > a {
+  color: var(--color-for);
+}
+.fiche-produit form #download > div > a:hover {
+  color: var(--color-first);
+}
+.fiche-produit form #download > div {
+  margin-bottom: 1rem;
+}
+.fiche-produit form #download {
+  margin-top: 2rem;
 }
 
 /*# sourceMappingURL=style.css.map */

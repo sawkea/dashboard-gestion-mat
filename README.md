@@ -68,7 +68,9 @@ Mise en place de sass avec fichier style.scss
 ## Création de la page listing
 * Création d'un formulaire qui va lister les achats de matériels dans la société DGMA
 
-
+## Création de la page fiche-produit
+* Création du formulaire 
+* ajout des styles et responsive ok
 -------------------------------------------
 ## BACK - Lisa
 

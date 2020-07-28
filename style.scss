@@ -8,7 +8,23 @@
     --color-incorrect:      rgb(199, 3, 3);
 }
 
-// Logo
+body{
+    font-family: var(--font-principal);
+    h2{
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-left: 1rem;
+        color: var(--color-first);
+    }
+}
+// Général
+.fas, .far{
+    color: var(--color-secondary);
+}
+.fas:hover, .far:hover{
+    color: var(--color-first);
+}
 
 // Form-login
 .backg-login{
@@ -57,8 +73,89 @@
            
         }
     }
-    
 }
 
+// listing.php
+.table .thead-dark th {
+    color: #fff;
+    background-color: var(--color-for);
+    border-color: var(--color-three);
+}
 
+.fa-plus-circle, .fa-power-off{
+    font-size: 2rem;
+    margin-right: 1rem;
+}
+.fa-power-off{
+    color: var(--color-first);
+}
+.fa-power-off:hover{
+    color: var(--color-incorrect);
+}
 
+// fiche-materiel.php
+.fa-arrow-alt-circle-left{
+    font-size: 2rem;
+    margin-right: 1rem;
+}
+
+.fiche-produit{
+    h2{
+        color: var(--color-three);
+        font-size: 1.525rem;
+        line-height: 3rem;
+        letter-spacing: 3px;;
+        
+    }
+    .bg-color{
+        background-color: var(--color-first);
+        height: 3rem;
+        border-radius: 0.3rem;
+        margin-bottom: 1rem;
+    }
+    background-color: var(--color-secondary);
+    padding: 1.25rem;
+    border-radius: 0.8rem;;
+    font-family: var(--font-principal);
+    margin-top: 3rem;
+    max-width: 50rem;
+    margin-left: auto;
+    margin-right: auto;
+    form{
+        button{
+            margin-top: 1.5rem;
+            background-color: var(--color-first);
+            border: none;
+            color: var(--color-three);
+            font-weight: 700;
+        }
+        button:hover{
+            background-color: var(--color-for);
+            color: var(--color-three);
+        }
+        div > a{
+            font-family: var(--font-principal);
+            font-weight: 700;
+            text-decoration: none;
+        }
+        
+        .fa-file-alt , .fa-receipt{
+            font-size: 1.5rem;
+            color: var(--color-for);
+        }
+        #download > div > a{
+            color: var(--color-for);
+        }
+        #download > div > a:hover{
+            
+            color:var(--color-first);
+        }
+        #download > div {
+            margin-bottom: 1rem;
+        }
+        #download{
+            margin-top: 2rem;
+        }
+    }
+    
+}
