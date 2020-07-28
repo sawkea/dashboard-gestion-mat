@@ -7,6 +7,25 @@
   --color-incorrect: rgb(199, 3, 3);
 }
 
+body {
+  font-family: var(--font-principal);
+}
+body h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-left: 1rem;
+  color: var(--color-first);
+}
+
+.fas, .far {
+  color: var(--color-secondary);
+}
+
+.fas:hover, .far:hover {
+  color: var(--color-first);
+}
+
 .backg-login {
   background-color: var(--color-secondary);
   height: 100vh;
@@ -53,6 +72,25 @@
 #form-login .login button:hover {
   background-color: #131313;
   color: var(--color-secondary);
+}
+
+.table .thead-dark th {
+  color: #fff;
+  background-color: var(--color-for);
+  border-color: var(--color-three);
+}
+
+.fa-plus-circle, .fa-power-off {
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+
+.fa-power-off {
+  color: var(--color-first);
+}
+
+.fa-power-off:hover {
+  color: var(--color-incorrect);
 }
 
 /*# sourceMappingURL=style.css.map */

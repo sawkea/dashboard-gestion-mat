@@ -65,6 +65,9 @@ Mise en place de sass avec fichier style.scss
 * Création du formulaire de login en HTML avec style 
 * Création du logo
 
+## Création de la page listing
+* Création d'un formulaire qui va lister les achats de matériels dans la société DGMA
+
 
 -------------------------------------------
 ## BACK - Lisa

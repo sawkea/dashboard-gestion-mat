@@ -3,5 +3,34 @@
 {% block title %}Listing{% endblock title %}
     
 {% block content %}
-    <h1>Gestion des achats de matériels</h1>
+    <div class="container">
+        <div class="container d-flex justify-content-center mt-5 mb-5"><h1><img src="medias/logo-dgma.png" alt="Logo DGMA" width="335" height="100"></h1></div>
+        <div class="d-flex justify-content-between align-items-center">
+            <h2 class="mb-4">Listing des achats de matériels</h2>
+            <div>
+                <a href="ajout.php"><span class="fas fa-plus-circle"></span></a>
+                <a href='deconnexion.php'><span class="fas fa-power-off"></span></a>
+            </div>
+        </div>
+        <!-- Listing of the dashboard -->
+            <div class="table-responsive">
+                <table class="table" data-toggle="table" data-search="true">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col" data-sortable="true">#</th>
+                            <th scope="col" data-sortable="true">Réf</th>
+                            <th scope="col" data-sortable="true">Nom</th>
+                            <th scope="col" data-sortable="true">Catégorie</th>
+                            <th scope="col" data-sortable="true">Date</th>
+                            <th scope="col"></th>
+                            <th scope="col"><a href="#"><span class="far fa-edit"></span></a></th>
+                            <th scope="col"><a href="#"><span class="fas fa-trash-alt"></span></a></th>
+                        </tr>
+                    </thead>    
+                    <tbody>
+                
+                    </tbody>
+                </table>
+            </div>
+    </div>
 {% endblock content %}
