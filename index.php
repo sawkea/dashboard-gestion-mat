@@ -6,8 +6,8 @@ $twig = new \Twig\Environment($loader, [
     'cache' => false,
 ]);
 
-echo('coucou');
 
-$template = $twig->load('base.html.twig');
+
+$template = $twig->load('pages/index.html.twig');
 echo $template->render();
 
