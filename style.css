@@ -152,5 +152,15 @@ body h2 {
 .fiche-produit form #download {
   margin-top: 2rem;
 }
+.fiche-produit form label {
+  font-weight: 700;
+}
+
+.fiche-produit form #upload button {
+  background-color: var(--color-for);
+}
+.fiche-produit form #upload button:hover {
+  background-color: var(--color-first);
+}
 
 /*# sourceMappingURL=style.css.map */
