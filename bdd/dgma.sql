@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 28 juil. 2020 à 09:28
+-- Généré le :  mer. 29 juil. 2020 à 07:27
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.4.0
 
@@ -38,7 +38,15 @@ CREATE TABLE IF NOT EXISTS `boutique` (
   `pays` varchar(45) DEFAULT NULL,
   `url` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `boutique`
+--
+
+INSERT INTO `boutique` (`id`, `nom`, `adresse`, `ville`, `cp`, `pays`, `url`) VALUES
+(2, 'BOULANGER', 'chateaufarine (centre commercial)', 'Besançon', '25000', 'France', NULL),
+(3, 'DARTY', 'chateaufarine (centre commercial)', 'Besançon', '25000', 'France', NULL);
 
 -- --------------------------------------------------------
 
@@ -51,7 +59,38 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `categorie`
+--
+
+INSERT INTO `categorie` (`id`, `nom`) VALUES
+(1, 'Électroménager'),
+(2, 'Bricolage'),
+(3, 'TV-HIFI'),
+(4, 'Voiture');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `e-commerce`
+--
+
+DROP TABLE IF EXISTS `e-commerce`;
+CREATE TABLE IF NOT EXISTS `e-commerce` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `site` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `e-commerce`
+--
+
+INSERT INTO `e-commerce` (`id`, `site`) VALUES
+(1, 'www.amazon.fr/\r\n'),
+(2, 'www.cdiscount.com\r\n');
 
 -- --------------------------------------------------------
 
@@ -65,14 +104,15 @@ CREATE TABLE IF NOT EXISTS `login` (
   `pseudo` varchar(55) NOT NULL,
   `mot_de_passe` varchar(55) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `login`
 --
 
 INSERT INTO `login` (`id`, `pseudo`, `mot_de_passe`) VALUES
-(1, 'admin', '*F757EE7C8726B3275D528FB21814A9A3743446FE');
+(1, 'admin', '*F757EE7C8726B3275D528FB21814A9A3743446FE'),
+(3, 'Lisa', 'Vaneil');
 
 -- --------------------------------------------------------
 
@@ -88,15 +128,23 @@ CREATE TABLE IF NOT EXISTS `produit` (
   `categorie_id` int(11) NOT NULL,
   `date_achat` date NOT NULL,
   `fin_garantie` date NOT NULL,
-  `prix` decimal(10,0) NOT NULL,
+  `prix` float NOT NULL,
   `conseils_entretien` text NOT NULL,
-  `facture` varchar(255) NOT NULL,
-  `manuel_utilisation` varchar(255) NOT NULL,
-  `boutique_id` int(11) NOT NULL,
+  `facture` varchar(255) DEFAULT NULL,
+  `manuel_utilisation` varchar(255) DEFAULT NULL,
+  `boutique_id` int(11) DEFAULT NULL,
+  `e-commerce_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `categorie_id` (`categorie_id`),
   KEY `boutique_id` (`boutique_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `produit`
+--
+
+INSERT INTO `produit` (`id`, `nom`, `reference`, `categorie_id`, `date_achat`, `fin_garantie`, `prix`, `conseils_entretien`, `facture`, `manuel_utilisation`, `boutique_id`, `e-commerce_id`) VALUES
+(1, 'ROWENTA X-PERT 160', 'RH7221WO', 1, '2020-07-05', '2021-07-05', 170.42, 'nettoyer le filtre après chaque utilisation', 'facture/row-ticket.jpg', 'manuel/row-guide.pdf', 2, NULL);
 
 --
 -- Contraintes pour les tables déchargées
