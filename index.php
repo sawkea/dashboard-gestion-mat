@@ -6,7 +6,7 @@ $mdp = '';
 $pseudo = '';
 $msg = '';
 
-if(isset($_POST['envoyer'])&&  !empty($_POST['user']) && !empty($_POST['mdp'])){
+if(isset($_POST['submit'])&&  !empty($_POST['user']) && !empty($_POST['mdp'])){
         
     $sql="SELECT pseudo, mot_de_passe FROM login WHERE pseudo = :pseudo";
     $sth = $dbh->prepare($sql);
