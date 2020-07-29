@@ -28,25 +28,27 @@
                         </tr>
                     </thead>    
                     <tbody>
+                    {% for produit in resultat %}
                         <tr>
                             <td>
-                                {{ id }}
+                                {{ produit.id }}
                             </td>
                             <td>
-                                {{ reference }}
+                                {{ produit.reference }}
                             </td>
                             <td>
-                                {{ nom }}
+                                {{ produit.nom }}
                             </td>
                             <td>
-                                {{ categorie }}
+                                {{ produit.categorie }}
                             </td>
                             <td>
-                                {{ date_achat }}
+                                {{ produit.date_achat}}
                             </td>
                             <td><a href="#"><span class="far fa-edit"></span></a></td>
                             <td><a href="#"><span class="fas fa-trash-alt"></span></a></td>
                         </tr>
+                         {% endfor %}
                     </tbody>
                 </table>
             </div>
