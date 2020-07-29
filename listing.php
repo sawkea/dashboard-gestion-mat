@@ -13,7 +13,7 @@ $twig = new \Twig\Environment($loader, [
 
 function liste_produit(){
     require('db.php');
-    $sql = "SELECT id, reference, nom, categorie_id, date_achat FROM produit";
+    $sql = "SELECT p.id, p.reference, p.nom AS marque, c.nom AS categorie, p.date_achat FROM produit AS p INNER JOIN categorie AS c ON p.categorie_id = c.id";
     $sth = $dbh->prepare($sql);  
     $sth->execute();
     return $sth;

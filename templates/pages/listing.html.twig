@@ -28,22 +28,22 @@
                         </tr>
                     </thead>    
                     <tbody>
-                    {% for produit in resultat %}
+                    {% for p in resultat %}
                         <tr>
                             <td>
-                                {{ produit.id }}
+                                {{ p.id }}
                             </td>
                             <td>
-                                {{ produit.reference }}
+                                {{ p.reference }}
                             </td>
                             <td>
-                                {{ produit.nom }}
+                                {{ p.marque }}
                             </td>
                             <td>
-                                {{ produit.categorie_id }}
+                                {{ p.categorie }}
                             </td>
                             <td>
-                                {{ produit.date_achat}}
+                                {{ p.date_achat}}
                             </td>
                             <td><a href="#"><span class="far fa-edit"></span></a></td>
                             <td><a href="#"><span class="fas fa-trash-alt"></span></a></td>
