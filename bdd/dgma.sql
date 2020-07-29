@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 29 juil. 2020 à 07:27
+-- Généré le :  mer. 29 juil. 2020 à 12:20
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.4.0
 
@@ -136,15 +136,18 @@ CREATE TABLE IF NOT EXISTS `produit` (
   `e-commerce_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `categorie_id` (`categorie_id`),
-  KEY `boutique_id` (`boutique_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  KEY `boutique_id` (`boutique_id`),
+  KEY `e-commerce_id` (`e-commerce_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `produit`
 --
 
 INSERT INTO `produit` (`id`, `nom`, `reference`, `categorie_id`, `date_achat`, `fin_garantie`, `prix`, `conseils_entretien`, `facture`, `manuel_utilisation`, `boutique_id`, `e-commerce_id`) VALUES
-(1, 'ROWENTA X-PERT 160', 'RH7221WO', 1, '2020-07-05', '2021-07-05', 170.42, 'nettoyer le filtre après chaque utilisation', 'facture/row-ticket.jpg', 'manuel/row-guide.pdf', 2, NULL);
+(1, 'ROWENTA X-PERT 160', 'RH7221WO', 1, '2020-07-05', '2021-07-05', 170.42, 'nettoyer le filtre après chaque utilisation', 'facture/row-ticket.jpg', 'manuel/row-guide.pdf', 2, NULL),
+(2, 'Refrigerateur americain', 'Lg GSJ470DIDV', 1, '2020-07-01', '2022-07-01', 1499, '-changer les filtres tous les 6 mois\r\n-nettoyer régulièrement', 'facture/frigoam-facture.jpg', NULL, 3, NULL),
+(3, 'TV LED Samsung', 'UE50TU7125', 3, '2020-06-16', '2021-06-16', 449.99, 'dépoussierer\r\ndébrancher en cas d\'orage', 'facture/tv-facture.jpg', 'manuel/notice.pdf', 3, NULL);
 
 --
 -- Contraintes pour les tables déchargées
