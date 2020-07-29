@@ -30,19 +30,6 @@ foreach($resultat as $ligne){
 }
 
 
-
-
-// $template = $twig->load('pages/listing.html.twig');
-// echo $template->render(array(
-//     'user' => 'Admin',
-//     'categorieTitle' => $select_categorie,
-//     'order' => $order,
-//     'categories' => categories(),
-//     'produits_list' => produits_list(),
-//     'nombre_page' => $nombre_page,
-//     'page_courante' => $current_page,
-// ));
-
 $template = $twig->load('pages/listing.html.twig');
 echo $template->render(array(
     'id' => '1',
