@@ -17,18 +17,36 @@
                 <table class="table" data-toggle="table" data-search="true">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col" data-sortable="true">#</th>
-                            <th scope="col" data-sortable="true">Réf</th>
+                            <th scope="col" data-sortable="true">Id</th>
+                            <th scope="col" data-sortable="true">Reference</th>
                             <th scope="col" data-sortable="true">Nom</th>
                             <th scope="col" data-sortable="true">Catégorie</th>
-                            <th scope="col" data-sortable="true">Date</th>
+                            <th scope="col" data-sortable="true">Date d'achat</th>
                             <th scope="col"></th>
-                            <th scope="col"><a href="#"><span class="far fa-edit"></span></a></th>
-                            <th scope="col"><a href="#"><span class="fas fa-trash-alt"></span></a></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>    
                     <tbody>
-                
+                        <tr>
+                            <td>
+                                {{ id }}
+                            </td>
+                            <td>
+                                {{ reference }}
+                            </td>
+                            <td>
+                                {{ nom }}
+                            </td>
+                            <td>
+                                {{ categorie }}
+                            </td>
+                            <td>
+                                {{ date_achat }}
+                            </td>
+                            <td><a href="#"><span class="far fa-edit"></span></a></td>
+                            <td><a href="#"><span class="fas fa-trash-alt"></span></a></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

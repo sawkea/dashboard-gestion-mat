@@ -19,6 +19,7 @@ $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
 $intlDateFormater = new IntlDateFormatter('fr_FR', IntlDateFormatter::SHORT, IntlDateFormatter::NONE);
 foreach($resultat as $ligne){
     echo '<tr>';
+        echo'<td>' . $ligne['id'] . '</td> ';
         echo'<td>' . $ligne['reference'] . '</td> ';
         echo'<td>' . $ligne['nom'] . '</td> ';
         echo'<td>' . $ligne['categorie'] . '</td> ';
@@ -31,5 +32,22 @@ foreach($resultat as $ligne){
 
 
 
+// $template = $twig->load('pages/listing.html.twig');
+// echo $template->render(array(
+//     'user' => 'Admin',
+//     'categorieTitle' => $select_categorie,
+//     'order' => $order,
+//     'categories' => categories(),
+//     'produits_list' => produits_list(),
+//     'nombre_page' => $nombre_page,
+//     'page_courante' => $current_page,
+// ));
+
 $template = $twig->load('pages/listing.html.twig');
-echo $template->render();
+echo $template->render(array(
+    'id' => '1',
+    'reference' => 'RH7221WO',
+    'nom' => 'ROWENTA X-PERT 160',
+    'categorie' => 1,
+    'date_achat' => 2020-07-05,
+));
