@@ -1,0 +1,111 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Ajout{% endblock title %}
+    
+{% block content %}
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-end mt-5 mb-5">
+            <h1><img src="medias/logo-dgma.png" alt="Logo DGMA" width="335" height="100"></h1>
+        </div>
+        <div class="d-flex justify-content-end align-items-end">
+            <a href="listing.php"><span class="far fa-arrow-alt-circle-left"></span></a>
+            <a href='deconnexion.php'><span class="fas fa-power-off"></span></a>
+        </div>
+        
+        <div class="fiche-produit">
+            <div class="bg-color"><h2 class="mt-3 mb-5 text-center">Modification d'un matériel</h2></div>
+            <form>
+                <div id="upload" class="d-flex flex-column align-items-end">
+                    <label for="form-ticket"></label>
+                    <button type="button" class="btn btn-success" onclick="uploadPictureClick(1)"><span class="fa fa-upload"></span> Charger le ticket d'achat</button>
+                    <input type="hidden" name="picture" value="">
+                    <label for="form-manuel"></label>
+                    <button type="button" class="btn btn-success" onclick="uploadPictureClick(2)"><span class="fa fa-upload"></span> Charger le manuel d'utilisation (pdf)</button>
+                    <input type="hidden" name="picture" value="">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label for="id">Id</label>
+                        <input type="number" class="form-control" name="id" required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="reference">Réf</label>
+                        <input type="number" class="form-control" name="reference" placeholder="Réf produit..." required>
+                    </div>
+                    <div class="form-group col-md-7">
+                        <label for="nom">Nom</label>
+                        <input type="text" class="form-control" name="nom" placeholder="Nom du produit..."required>
+                    </div>
+              
+                    <!-- CATEGORIE -->
+                    <div class="form-group col-md-4">
+                        <label for="categorie">Catégorie</label>
+                        <select id="categorie" class="form-control" required>
+                        <option selected>Sélectionner la catégorie...</option>
+                        <option>Electroménager</option>
+                        <option>TV-HIFI</option>
+                        <option>Bricolage</option>
+                        <option>Voiture</option>
+                        </select>
+                    </div>
+                    <!-- PRIX -->
+                    <div class="form-group col-md-4">
+                        <label for="prix">Prix</label>
+                        <input type="number" class="form-control" name="prix" placeholder="Entrez un prix..." required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="date">Date d'achat</label>
+                        <input type="date" class="form-control" name="date" required>
+                    </div>
+                    <!-- DATE D'ACHAT -->
+                    <div class="form-group col-md-4">
+                        <label for="date">Date de fin de garantie</label>
+                        <input type="date" class="form-control" name="date" required>
+                    </div>
+                
+                    <!-- CONSEILS pour l'entretien -->
+                    <div class="form-group col-md-8">
+                    <label for="conseils">Conseils pour l'entretien</label>
+                    <input type="text" class="form-control" name="conseil_entretien" placeholder="Ecrire ici les conseils pour l'entretien..." required>
+                    </div>
+                </div>
+                <!-- SELECTION lieu d'achat -->
+                <div class="input-group mb-3">
+                    <select class="custom-select" id="inputGroupSelect02" required>
+                        <option selected>Sélectionner le lieu d'achat...</option>
+                        <option value="vente_directe">Vente directe</option>
+                        <option value="">E-commerce</option>
+                      </select>
+                      <div class="input-group-append">
+                        <label class="input-group-text" for="inputGroupSelect02">ok</label>
+                      </div>
+                </div>
+                <!-- ADRESSE si la sélection est vente directe -->
+                <div class="form-group">
+                    <label for="inputAddress">Adresse</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="7, rue du Général..." required>
+                </div>
+                <div class="form-row">
+                <div class="form-group col-md-8">
+                    <label for="inputVille">Ville</label>
+                    <input type="text" class="form-control" id="inputVille" placeholder="Entrer votre ville..." required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputCP">CP</label>
+                    <input type="text" class="form-control" id="inputCP" placeholder="Entrer votre code postal..."required>
+                </div>
+            </div>
+            <!-- URL si la sélection est E-commerce -->
+            <div class="form-group">
+                <label for="url">Entrer l'url</label>
+                <input type="url" name="url" id="url" class="form-control" placeholder="https://example.com" pattern="https://.*" size="30" required>
+            </div>
+            
+                <div class="d-flex justify-content-end"><button type="submit" class="btn btn-primary">Modifier</button></div>
+            </form>
+        </div>
+    </div>
+{% endblock content %}
+
+
+    
