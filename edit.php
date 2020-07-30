@@ -127,5 +127,19 @@ $twig = new \Twig\Environment($loader, [
 ]);
 
 
-$template = $twig->load('pages/index.html.twig');
-echo $template->render(['message', $msg]);
+$template = $twig->load('pages/edit.html.twig');
+echo $template->render(array(
+    'id' => $id,
+    'nom' => $nom,
+    'reference' => $reference,
+    'categorie_id' => $categorie_id,
+    'date_achat' => $date_achat,
+    'nom' => $nom,
+    'nom' => $nom,
+    'nom' => $nom,
+    'nom' => $nom,
+    'nom' => $nom,
+    'nom' => $nom,
+    'nom' => $nom,
+
+));
