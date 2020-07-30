@@ -132,7 +132,7 @@ echo $template->render(array(
     'id' => $id,
     'nom' => $nom,
     'reference' => $reference,
-    'categorie_id' => $categorie_id,
+    //'categorie_id' => $categorie_id,
     'date_achat' => $date_achat,
     'fin_garantie' => $fin_garantie,
     'prix' => $prix,
