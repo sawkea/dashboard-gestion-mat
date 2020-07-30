@@ -93,6 +93,73 @@ body h2 {
   color: var(--color-incorrect);
 }
 
+/* Boite modal (button suppression) */
+#modal.hidden {
+  display: none;
+}
+
+#modal_dialogue {
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  background-color: white;
+  min-height: 100px;
+  border-radius: 6px;
+  box-shadow: 10px 14px 24px -6px rgba(0, 0, 0, 0.33);
+}
+#modal_dialogue #warning span {
+  color: #df0000;
+  font-size: 1.5rem;
+  margin-right: 0.75rem;
+}
+#modal_dialogue #warning {
+  font-family: var(--font-principal);
+  color: #df0000;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-align: center;
+  border-bottom: solid var(--color-action) 0.25px;
+}
+
+#modal_text {
+  font-size: 1rem;
+  font-family: var(--font-principal);
+  font-weight: bold;
+  text-align: center;
+}
+
+#modal_area_btn {
+  text-align: center;
+}
+
+#modal_btn_no, #modal_btn_yes {
+  font-size: 1rem;
+  color: white;
+  padding: 8px 20px;
+  border: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+#modal_btn_no {
+  background-color: var(--color-first);
+  margin-right: 20px;
+  border-radius: 6px;
+}
+
+#modal_btn_no:hover {
+  background-color: var(--color-for);
+}
+
+#modal_btn_yes {
+  background-color: #df0000;
+  border-radius: 6px;
+}
+
+#modal_btn_yes:hover {
+  background-color: #910101;
+}
+
 .fa-arrow-alt-circle-left {
   font-size: 2rem;
   margin-right: 1rem;

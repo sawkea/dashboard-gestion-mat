@@ -46,11 +46,25 @@
                                 {{ p.date_achat}}
                             </td>
                             <td><a href="edit.php"><span class="far fa-edit"></span></a></td>
-                            <td><a href="#"><span class="fas fa-trash-alt"></span></a></td>
+                            <td><a href="delete.php"><span class="fas fa-trash-alt"></span></a></td>
                         </tr>
                          {% endfor %}
                     </tbody>
                 </table>
+            </div>
+
+            <!-- modal -->
+            <div class="d-flex justify-content-center">
+                <div id="modal" class="hidden">
+                    <div id="modal_dialogue">
+                        <p id="warning"><span class="fas fa-exclamation-triangle"></span>Attention</p>
+                        <p id="modal_text">Etes-vous sûr de vouloir supprimer ?</p>    
+                        <div id="modal_area_btn">
+                            <button id="modal_btn_no">Cancel</button>
+                            <button id="modal_btn_yes">Yes</button>
+                        </div>
+                    </div>
+                </div>
             </div>
     </div>
 {% endblock content %}
