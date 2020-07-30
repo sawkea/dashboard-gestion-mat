@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :root {
   --font-principal: "Arimo";
   --color-first: #333533;
@@ -225,6 +226,9 @@ body h2 {
 }
 .fiche-produit #upload button:hover {
   background-color: var(--color-first);
+}
+.fiche-produit .custom-file-input:lang(en) ~ .custom-file-label::after {
+  content: "Télécharger";
 }
 
 /*# sourceMappingURL=style.css.map */
