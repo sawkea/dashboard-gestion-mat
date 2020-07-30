@@ -19,8 +19,6 @@ function liste_produit(){
     return $sth;
 }
 
- 
-$intlDateFormater = new IntlDateFormatter('fr_FR', IntlDateFormatter::SHORT, IntlDateFormatter::NONE);
 
 
 $template = $twig->load('pages/listing.html.twig');
