@@ -28,9 +28,12 @@ $error = false;
 
 // Vérifier si on demande on passe en mode edit et non en mode Ajout
 if(isset($_GET['id'])){
-    $sql = "SELECT id, nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, facture, manuel_utilisation, boutique_id, site_id FROM produit";
+    //if(isset($_GET['edit'])&& ($get['edit']== 1)){
+    $sql = "SELECT id, nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, facture, manuel_utilisation, boutique, url, adresse, ville, cp FROM produit where id = :id";
 
     $sth = $dbh->prepare($sql);
+    $sth->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
+    
     $sth->execute();
     
     $data = $sth->fetch(PDO::FETCH_ASSOC);
@@ -39,7 +42,7 @@ if(isset($_GET['id'])){
     //data est booléen
     if(gettype($data) === "boolean"){
         header('Location: listing.php');
-        exit;
+         exit;
     }
     $nom = $data['nom'];
     $reference = $data['reference'];
@@ -52,8 +55,11 @@ if(isset($_GET['id'])){
     $manuel_utilisation = $data['manuel_utilisation'];
     $boutique = $data['boutique'];
     $adresse = $data['adresse'];
+    $ville = $data['ville'];
+    $cp = $data['cp'];
     $url = $data['url'];
-    $id = htmlentities($_POST['id']);
+    $id = htmlentities($_GET['id']);
+    //}
 }
 //On va vérifier si on reçoit le formulaire (s'il est soumis)
 if(count($_POST)>0){
@@ -97,7 +103,7 @@ if(count($_POST)>0){
     $cp = trim($_POST['cp']);
     $url = trim($_POST['url']);
 
-    if(isset($_POST['edit']) && isset($_POST['id'])){
+    if(isset($_GET['edit']) && isset($_GET['id'])){
         $id = htmlentities($_POST['id']);
     }
     //Si pas d'erreur on insère dans la base de données
@@ -135,7 +141,7 @@ if(count($_POST)>0){
         $sth->execute();
         header('Location: listing.php');
 
-    }
+     }
 }
 
 $loader = new \Twig\Loader\FilesystemLoader('templates');
@@ -143,9 +149,7 @@ $twig = new \Twig\Environment($loader, [
     'cache' => false,
 ]);
 
-var_dump($id);
-var_dump($nom);
-var_dump($reference);
+
 $template = $twig->load('pages/edit.html.twig');
 echo $template->render(array(
     'id' => $id,
