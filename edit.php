@@ -18,13 +18,19 @@ $prix = '';
 $conseils_entretien = '';
 $facture = '';
 $manuel_utilisation = '';
-$boutique_id = '';
-$site_id = '';
+$boutique = '';
+$adresse = '';
+$ville = '';
+$cp = '';
+$url = '';
+
 $error = false;
 
 // Vérifier si on demande on passe en mode edit et non en mode Ajout
 if(isset($_GET['id'])){
     $sql = "SELECT id, nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, facture, manuel_utilisation, boutique_id, site_id FROM produit";
+if(isset($_POST['id'])&& isset($_POST['edit'])){
+    $sql = "SELECT id, nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, facture, manuel_utilisation, boutique, adresse, ville, cp, url FROM produit";
     $sth = $dbh->prepare($sql);
     $sth->execute();
     
@@ -38,16 +44,17 @@ if(isset($_GET['id'])){
     }
     $nom = $data['nom'];
     $reference = $data['reference'];
-    $catgorie_id = $data['categorie_id'];
+    $categorie_id = $data['categorie_id'];
     $date_achat  = $data['date_achat'];
     $fin_garantie = $data['fin_garantie'];
     $prix = $data['prix'];
     $conseils_entretien = $data['conseils_entretien'];
     $facture = $data['facture'];
     $manuel_utilisation = $data['manuel_utilisation'];
-    $boutique_id = $data['boutique_id'];
-    $site_id = $data['site_id'];
-    $id = htmlentities($_GET['id']);
+    $boutique = $data['boutique'];
+    $adresse = $data['adresse'];
+    $url = $data['url'];
+    $id = htmlentities($_POST['id']);
 }
 //On va vérifier si on reçoit le formulaire (s'il est soumis)
 if(count($_POST)>0){
@@ -83,10 +90,13 @@ if(count($_POST)>0){
         $error= true;
     }
     //les champs en "null"
-    $complement = trim($_POST['facture']);
-    $complement = trim($_POST['manuel_utilisation']);
-    $complement = trim($_POST['boutique_id']);
-    $complement = trim($_POST['site_id']);
+    $facture = trim($_POST['facture']);
+    $manuel_utilisation = trim($_POST['manuel_utilisation']);
+    $boutique = trim($_POST['boutique']);
+    $adresse = trim($_POST['adresse']);
+    $ville = trim($_POST['ville']);
+    $cp = trim($_POST['cp']);
+    $url = trim($_POST['url']);
 
     if(isset($_POST['edit']) && isset($_POST['id'])){
         $id = htmlentities($_POST['id']);
@@ -94,25 +104,28 @@ if(count($_POST)>0){
     //Si pas d'erreur on insère dans la base de données
     if($error===false){
         if(isset($_POST['edit']) && isset($_POST['id'])){
-            $sql = "update produit set id=:id, nom=:nom, reference=:reference, categorie_id=:categorie_id, date_achat=:date_achat, fin_garantie=:fin_garantie, prix=:prix, conseils_entretien=:conseils_entretien, facture=:facture, manuel_utilisation=:manuel_utilisation, boutique_id=:boutique_id, site_id=:site_id";
+            $sql = "update produit set id=:id, nom=:nom, reference=:reference, categorie_id=:categorie_id, date_achat=:date_achat, fin_garantie=:fin_garantie, prix=:prix, conseils_entretien=:conseils_entretien, facture=:facture, manuel_utilisation=:manuel_utilisation, boutique=:boutique, adresse=:adresse, ville=:ville, cp=:cp, url=:url";
         }else{
-            $sql = "INSERT INTO produit(id, nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, facture, manuel_utilisation, boutique_id, site_id) VALUES(:id, :nom, :reference, :categorie_id, :date_achat, :fin_garantie, :prix, :conseils_entretien, :facture, :manuel_utilisation, :boutique_id, :site_id)";
+            $sql = "INSERT INTO produit(id, nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, facture, manuel_utilisation, boutique, adresse, ville, cp, url) VALUES(:id, :nom, :reference, :categorie_id, :date_achat, :fin_garantie, :prix, :conseils_entretien, :facture, :manuel_utilisation, :boutique, :adresse, :ville, :cp, :url)";
         }
 
         $sth = $dbh->prepare($sql);
 
         //ci-dessous ces fonctions protègent notre formulaire de toute injection de sql ou html
-        //bindParam pour les chaines de caractères
+        //bindParam pour les varchar
         $sth->bindParam(':nom', $nom, PDO::PARAM_STR);
         $sth->bindParam(':reference', $reference, PDO::PARAM_STR);
         $sth->bindParam(':categorie_id', $categorie_id, PDO::PARAM_STR);
         $sth->bindParam(':conseils_entretien', $conseils_entretien, PDO::PARAM_STR);
         $sth->bindParam(':facture', $facture, PDO::PARAM_STR);
         $sth->bindParam(':manuel_utilisation', $manuel_utilisation, PDO::PARAM_STR);
-        $sth->bindParam(':boutique_id', $boutique_id, PDO::PARAM_STR);
-        $sth->bindParam(':site_id', $site_id, PDO::PARAM_STR);
+        $sth->bindParam(':boutique', $boutique, PDO::PARAM_STR);
+        $sth->bindParam(':adresse', $adresse, PDO::PARAM_STR);
+        $sth->bindParam(':ville', $ville, PDO::PARAM_STR);
+        $sth->bindParam(':cp', $cp, PDO::PARAM_STR);
+        $sth->bindParam(':url', $url, PDO::PARAM_STR);
 
-        //dates et prix en bindValue
+        //date, INT, FLOAT
         $sth->bindValue(':id', $id, PDO::PARAM_STR);
         $sth->bindValue(':date_achat', strftime("%Y-%m-%d",strtotime($date_achat)), PDO::PARAM_STR);
         $sth->bindValue(':fin_garantie', strftime("%Y-%m-%d",strtotime($fin_garantie)), PDO::PARAM_STR);
@@ -146,6 +159,9 @@ echo $template->render(array(
     'conseils_entretien' => $conseils_entretien,
     'facture' => $facture,
     'manuel_utilisation' => $manuel_utilisation,
-    'boutique_id' => $boutique_id,
-    'site_id' => $site_id,
+    'boutique' => $boutique,
+    'adresse' => $adresse,
+    'ville' => $ville,
+    'cp' => $cp,
+    'url' => $url
 ));
