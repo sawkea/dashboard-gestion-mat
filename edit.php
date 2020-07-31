@@ -27,22 +27,22 @@ $url = '';
 $error = false;
 
 // Vérifier si on demande on passe en mode edit et non en mode Ajout
-if(isset($_GET['id'])){
-    if(isset($_GET['edit'])&& ($_GET['edit']== 1)){
+if(isset($_GET['id'])&&isset($_GET['edit'])&& ($_GET['edit']== 1)){
+
     $sql = "SELECT id, nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, facture, manuel_utilisation, boutique, url, adresse, ville, cp FROM produit where id = :id";
 
     $sth = $dbh->prepare($sql);
     $sth->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
-    
+        
     $sth->execute();
-    
+        
     $data = $sth->fetch(PDO::FETCH_ASSOC);
     //Condition pour sécuriser le formulaire 
     //si pas de résultat de la requête
     //data est booléen
     if(gettype($data) === "boolean"){
-        header('Location: listing.php');
-         exit;
+         header('Location: listing.php');
+        exit;
     }
     $nom = $data['nom'];
     $reference = $data['reference'];
@@ -59,7 +59,7 @@ if(isset($_GET['id'])){
     $cp = $data['cp'];
     $url = $data['url'];
     $id = htmlentities($_GET['id']);
-    }
+    
 }
 //On va vérifier si on reçoit le formulaire (s'il est soumis)
 if(count($_POST)>0){
@@ -95,13 +95,13 @@ if(count($_POST)>0){
         $error= true;
     }
     //les champs en "null"
-    $facture = trim($_POST['facture']);
-    $manuel_utilisation = trim($_POST['manuel_utilisation']);
-    $boutique = trim($_POST['boutique']);
-    $adresse = trim($_POST['adresse']);
-    $ville = trim($_POST['ville']);
-    $cp = trim($_POST['cp']);
-    $url = trim($_POST['url']);
+    //$facture = trim($_POST['facture']);
+    //$manuel_utilisation = trim($_POST['manuel_utilisation']);
+    // $boutique = trim($_POST['boutique']);
+    // $adresse = trim($_POST['adresse']);
+    // $ville = trim($_POST['ville']);
+    // $cp = trim($_POST['cp']);
+    // $url = trim($_POST['url']);
 
     if(isset($_POST['id'])){
         $id = htmlentities($_POST['id']);
