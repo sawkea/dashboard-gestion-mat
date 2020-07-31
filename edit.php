@@ -143,6 +143,12 @@ if(count($_POST)>0){
 
      }
 }
+if(isset($_GET['id'])&& isset($_GET['edit'])){
+    $txtTitle = "Modifier";
+}else{
+        $txtTitle= "Ajouter";
+}
+
 
 $loader = new \Twig\Loader\FilesystemLoader('templates');
 $twig = new \Twig\Environment($loader, [
@@ -166,5 +172,6 @@ echo $template->render(array(
     'adresse' => $adresse,
     'ville' => $ville,
     'cp' => $cp,
-    'url' => $url
+    'url' => $url,
+    'txttitle' => $txtTitle
 ));
