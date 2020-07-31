@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
 session_start(); 
 require_once 'vendor/autoload.php';
 require_once('db.php');
@@ -8,7 +11,7 @@ if(empty($_SESSION['pseudo'])){
 $id = '';
 $nom = '';
 $reference = '';
-$catgorie_id = '';
+$categorie_id = '';
 $date_achat  = '';
 $fin_garantie = '';
 $prix = '';
@@ -20,10 +23,11 @@ $site_id = '';
 $error = false;
 
 // Vérifier si on demande on passe en mode edit et non en mode Ajout
-if(isset($_POST['id'])&& isset($_POST['edit'])){
-    $sql = "SELECT id, nom, reference, categorie_id, date_achat, fin_garantie, prix, conseis_entretien, facture, manuel_utilisation, boutique_id, site_id FROM produit";
+if(isset($_GET['id'])){
+    $sql = "SELECT id, nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, facture, manuel_utilisation, boutique_id, site_id FROM produit";
     $sth = $dbh->prepare($sql);
     $sth->execute();
+    
     $data = $sth->fetch(PDO::FETCH_ASSOC);
     //Condition pour sécuriser le formulaire 
     //si pas de résultat de la requête
@@ -43,7 +47,7 @@ if(isset($_POST['id'])&& isset($_POST['edit'])){
     $manuel_utilisation = $data['manuel_utilisation'];
     $boutique_id = $data['boutique_id'];
     $site_id = $data['site_id'];
-    $id = htmlentities($_POST['id']);
+    $id = htmlentities($_GET['id']);
 }
 //On va vérifier si on reçoit le formulaire (s'il est soumis)
 if(count($_POST)>0){
@@ -90,9 +94,9 @@ if(count($_POST)>0){
     //Si pas d'erreur on insère dans la base de données
     if($error===false){
         if(isset($_POST['edit']) && isset($_POST['id'])){
-            $sql = "update produit set nom=:nom, reference=:reference, categorie_id=:categorie_id, date_achat=:date_achat, fin_garantie=:fin_garantie, prix=:prix, conseils_entretien=:conseils_entretien, facture=:facture, manuel_utilisation=:manuel_utilisation, boutique_id=:boutique_id, site_id=:site_id";
+            $sql = "update produit set id=:id, nom=:nom, reference=:reference, categorie_id=:categorie_id, date_achat=:date_achat, fin_garantie=:fin_garantie, prix=:prix, conseils_entretien=:conseils_entretien, facture=:facture, manuel_utilisation=:manuel_utilisation, boutique_id=:boutique_id, site_id=:site_id";
         }else{
-            $sql = "INSERT INTO produit(nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, facture, manuel_utilisation, boutique_id, site_id) VALUES(:nom, :reference, :categorie_id, :date_achat, :fin_garantie, :prix, :conseils_entretien, :facture, :manuel_utilisation, :boutique_id, :site_id)";
+            $sql = "INSERT INTO produit(id, nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, facture, manuel_utilisation, boutique_id, site_id) VALUES(:id, :nom, :reference, :categorie_id, :date_achat, :fin_garantie, :prix, :conseils_entretien, :facture, :manuel_utilisation, :boutique_id, :site_id)";
         }
 
         $sth = $dbh->prepare($sql);
@@ -109,6 +113,7 @@ if(count($_POST)>0){
         $sth->bindParam(':site_id', $site_id, PDO::PARAM_STR);
 
         //dates et prix en bindValue
+        $sth->bindValue(':id', $id, PDO::PARAM_STR);
         $sth->bindValue(':date_achat', strftime("%Y-%m-%d",strtotime($date_achat)), PDO::PARAM_STR);
         $sth->bindValue(':fin_garantie', strftime("%Y-%m-%d",strtotime($fin_garantie)), PDO::PARAM_STR);
         $sth->bindValue(':prix', $prix, PDO::PARAM_STR);
@@ -126,7 +131,9 @@ $twig = new \Twig\Environment($loader, [
     'cache' => false,
 ]);
 
-
+var_dump($id);
+var_dump($nom);
+var_dump($reference);
 $template = $twig->load('pages/edit.html.twig');
 echo $template->render(array(
     'id' => $id,

@@ -8,7 +8,7 @@ if(empty($_SESSION['pseudo'])){
 $id = '';
 $nom = '';
 $reference = '';
-$catgorie_id = '';
+$categorie_id = '';
 $date_achat  = '';
 $fin_garantie = '';
 $prix = '';
@@ -21,7 +21,7 @@ $error = false;
 
 // Vérifier si on demande on passe en mode edit et non en mode Ajout
 if(isset($_POST['id'])&& isset($_POST['edit'])){
-    $sql = "SELECT id, nom, reference, categorie_id, date_achat, fin_garantie, prix, conseis_entretien, facture, manuel_utilisation, boutique_id, site_id FROM produit";
+    $sql = "SELECT id, nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, facture, manuel_utilisation, boutique_id, site_id FROM produit";
     $sth = $dbh->prepare($sql);
     $sth->execute();
     $data = $sth->fetch(PDO::FETCH_ASSOC);
@@ -34,7 +34,7 @@ if(isset($_POST['id'])&& isset($_POST['edit'])){
     }
     $nom = $data['nom'];
     $reference = $data['reference'];
-    $catgorie_id = $data['categorie_id'];
+    $categorie_id = $data['categorie_id'];
     $date_achat  = $data['date_achat'];
     $fin_garantie = $data['fin_garantie'];
     $prix = $data['prix'];
@@ -90,9 +90,9 @@ if(count($_POST)>0){
     //Si pas d'erreur on insère dans la base de données
     if($error===false){
         if(isset($_POST['edit']) && isset($_POST['id'])){
-            $sql = "update produit set nom=:nom, reference=:reference, categorie_id=:categorie_id, date_achat=:date_achat, fin_garantie=:fin_garantie, prix=:prix, conseils_entretien=:conseils_entretien, facture=:facture, manuel_utilisation=:manuel_utilisation, boutique_id=:boutique_id, site_id=:site_id";
+            $sql = "update produit set id=:id, nom=:nom, reference=:reference, categorie_id=:categorie_id, date_achat=:date_achat, fin_garantie=:fin_garantie, prix=:prix, conseils_entretien=:conseils_entretien, facture=:facture, manuel_utilisation=:manuel_utilisation, boutique_id=:boutique_id, site_id=:site_id";
         }else{
-            $sql = "INSERT INTO produit(nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, facture, manuel_utilisation, boutique_id, site_id) VALUES(:nom, :reference, :categorie_id, :date_achat, :fin_garantie, :prix, :conseils_entretien, :facture, :manuel_utilisation, :boutique_id, :site_id)";
+            $sql = "INSERT INTO produit(id, nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, facture, manuel_utilisation, boutique_id, site_id) VALUES(:id, :nom, :reference, :categorie_id, :date_achat, :fin_garantie, :prix, :conseils_entretien, :facture, :manuel_utilisation, :boutique_id, :site_id)";
         }
 
         $sth = $dbh->prepare($sql);
@@ -109,6 +109,7 @@ if(count($_POST)>0){
         $sth->bindParam(':site_id', $site_id, PDO::PARAM_STR);
 
         //dates et prix en bindValue
+        $sth->bindValue(':id', $id, PDO::PARAM_STR);
         $sth->bindValue(':date_achat', strftime("%Y-%m-%d",strtotime($date_achat)), PDO::PARAM_STR);
         $sth->bindValue(':fin_garantie', strftime("%Y-%m-%d",strtotime($fin_garantie)), PDO::PARAM_STR);
         $sth->bindValue(':prix', $prix, PDO::PARAM_STR);

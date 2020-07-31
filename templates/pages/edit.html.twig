@@ -14,59 +14,60 @@
         
         <div class="fiche-produit">
             <div class="bg-color"><h2 class="mt-3 mb-5 text-center">Modification d'un matériel</h2></div>
+            
+            
             <form>
-                <div id="upload" class="d-flex flex-column align-items-end">
-                    <label for="form-ticket"></label>
-                    <button type="button" class="btn btn-success" onclick="uploadPictureClick(1)"><span class="fa fa-upload"></span> Charger le ticket d'achat</button>
-                    <input type="hidden" name="picture" value="">
-                    <label for="form-manuel"></label>
-                    <button type="button" class="btn btn-success" onclick="uploadPictureClick(2)"><span class="fa fa-upload"></span> Charger le manuel d'utilisation (pdf)</button>
-                    <input type="hidden" name="picture" value="">
+                <div id="download" class="d-flex flex-column align-items-end">
+                    <div><a href="#photo-ticket" download="facture"{{ facture }}>Ticket - achat <span class="fas fa-receipt"></span></a></div>
+                    <div><a href="#manuel" download="Manuel d'utilisation"{{ manuel_utilisation }}>Manuel d'utilisation (pdf) </a><span class="fas fa-file-alt" ></span></a></div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-2">
                         <label for="id">Id</label>
-                        <input type="number" class="form-control" name="id" required>
+                        
+                        <input type="number" class="form-control" name="id"  value="{{ id }}" required>
+                     
                     </div>
+                
                     <div class="form-group col-md-3">
                         <label for="reference">Réf</label>
-                        <input type="number" class="form-control" name="reference" placeholder="Réf produit..." required>
+                        <input type="text" class="form-control" name="reference" placeholder="Réf produit..." value="{{ reference }}" required>
                     </div>
                     <div class="form-group col-md-7">
                         <label for="nom">Nom</label>
-                        <input type="text" class="form-control" name="nom" placeholder="Nom du produit..."required>
+                        <input type="text" class="form-control" name="nom" placeholder="Nom du produit..." value="{{ nom }}" required>
                     </div>
               
                     <!-- CATEGORIE -->
                     <div class="form-group col-md-4">
                         <label for="categorie">Catégorie</label>
-                        <select id="categorie" class="form-control" required>
+                        <select id="categorie" class="form-control" value="{{ categorie_id }}" required>
                         <option selected>Sélectionner la catégorie...</option>
-                        <option>Electroménager</option>
-                        <option>TV-HIFI</option>
-                        <option>Bricolage</option>
-                        <option>Voiture</option>
+                        <option value="1">Electroménager</option>
+                        <option value="2">TV-HIFI</option>
+                        <option value="3">Bricolage</option>
+                        <option value="4">Voiture</option>
                         </select>
                     </div>
                     <!-- PRIX -->
                     <div class="form-group col-md-4">
                         <label for="prix">Prix</label>
-                        <input type="number" class="form-control" name="prix" placeholder="Entrez un prix..." required>
+                        <input type="number" class="form-control" name="prix" placeholder="Entrez un prix..." value="{{ prix }}" required>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="date">Date d'achat</label>
-                        <input type="date" class="form-control" name="date" required>
+                        <input type="date" class="form-control" name="date" value="{{ date_achat }}" required>
                     </div>
                     <!-- DATE D'ACHAT -->
                     <div class="form-group col-md-4">
                         <label for="date">Date de fin de garantie</label>
-                        <input type="date" class="form-control" name="date" required>
+                        <input type="date" class="form-control" name="date" value="{{ fin_garantie }}" required>
                     </div>
                 
                     <!-- CONSEILS pour l'entretien -->
                     <div class="form-group col-md-8">
                     <label for="conseils">Conseils pour l'entretien</label>
-                    <input type="text" class="form-control" name="conseil_entretien" placeholder="Ecrire ici les conseils pour l'entretien..." required>
+                    <input type="text" class="form-control" name="conseil_entretien" placeholder="Ecrire ici les conseils pour l'entretien..." value="{{ conseils_entretien }}" required>
                     </div>
                 </div>
                 <!-- SELECTION lieu d'achat -->
@@ -103,6 +104,7 @@
             
                 <div class="d-flex justify-content-end"><button type="submit" class="btn btn-primary">Modifier</button></div>
             </form>
+            
         </div>
     </div>
 {% endblock content %}
