@@ -16,7 +16,7 @@
             <div class="bg-color"><h2 class="mt-3 mb-5 text-center">Modification d'un matériel</h2></div>
             
             
-            <form>
+            <form action="edit.php" method="post">
                 <div id="download" class="d-flex flex-column align-items-end">
                     <div><a href="#photo-ticket" download="facture"{{ facture }}>Ticket - achat <span class="fas fa-receipt"></span></a></div>
                     <div><a href="#manuel" download="Manuel d'utilisation"{{ manuel_utilisation }}>Manuel d'utilisation (pdf) </a><span class="fas fa-file-alt" ></span></a></div>
@@ -34,7 +34,7 @@
                     <!-- CATEGORIE -->
                     <div class="form-group col-md-4">
                         <label for="categorie">Catégorie</label>
-                        <select id="categorie" class="form-control" value="{{ categorie_id }}" required>
+                        <select id="categorie" class="form-control" value="{{ categorie_id }}" name="categorie_id" required>
                         <option selected>Sélectionner la catégorie...</option>
                         <option value="1">Electroménager</option>
                         <option value="2">TV-HIFI</option>
@@ -49,18 +49,18 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="date">Date d'achat</label>
-                        <input type="date" class="form-control" name="date" value="{{ date_achat }}" required>
+                        <input type="date" class="form-control" name="date_achat" value="{{ date_achat }}" required>
                     </div>
                     <!-- DATE D'ACHAT -->
                     <div class="form-group col-md-4">
                         <label for="date">Date de fin de garantie</label>
-                        <input type="date" class="form-control" name="date" value="{{ fin_garantie }}" required>
+                        <input type="date" class="form-control" name="fin_garantie" value="{{ fin_garantie }}" required>
                     </div>
                 
                     <!-- CONSEILS pour l'entretien -->
                     <div class="form-group col-md-8">
                     <label for="conseils">Conseils pour l'entretien</label>
-                    <input type="text" class="form-control" name="conseil_entretien" placeholder="Ecrire ici les conseils pour l'entretien..." value="{{ conseils_entretien }}" required>
+                    <input type="text" class="form-control" name="conseils_entretien" placeholder="Ecrire ici les conseils pour l'entretien..." value="{{ conseils_entretien }}" required>
                     </div>
                 </div>
                 <!-- SELECTION lieu d'achat -->
@@ -77,23 +77,25 @@
                 <!-- ADRESSE si la sélection est vente directe -->
                 <div class="form-group">
                     <label for="inputAddress">Adresse</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="7, rue du Général..." required>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="7, rue du Général...">
                 </div>
                 <div class="form-row">
                 <div class="form-group col-md-8">
                     <label for="inputVille">Ville</label>
-                    <input type="text" class="form-control" id="inputVille" placeholder="Entrer votre ville..." required>
+                    <input type="text" class="form-control" id="inputVille" placeholder="Entrer la ville...">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputCP">CP</label>
-                    <input type="text" class="form-control" id="inputCP" placeholder="Entrer votre code postal..."required>
+                    <input type="text" class="form-control" id="inputCP" placeholder="Entrer le code postal...">
                 </div>
             </div>
             <!-- URL si la sélection est E-commerce -->
             <div class="form-group">
                 <label for="url">Entrer l'url</label>
-                <input type="url" name="url" id="url" class="form-control" placeholder="https://example.com" pattern="https://.*" size="30" required>
+                <input type="url" name="url" id="url" class="form-control" placeholder="https://example.com" pattern="https://.*" size="30">
             </div>
+                <!--<input type="hidden" name="edit" value="1">-->
+                <input type="hidden" name="id" value="{{ id}}">
             
                 <div class="d-flex justify-content-end"><button type="submit" class="btn btn-primary">Modifier</button></div>
             </form>

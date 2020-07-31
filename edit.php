@@ -28,7 +28,7 @@ $error = false;
 
 // Vérifier si on demande on passe en mode edit et non en mode Ajout
 if(isset($_GET['id'])){
-    //if(isset($_GET['edit'])&& ($get['edit']== 1)){
+    if(isset($_GET['edit'])&& ($_GET['edit']== 1)){
     $sql = "SELECT id, nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, facture, manuel_utilisation, boutique, url, adresse, ville, cp FROM produit where id = :id";
 
     $sth = $dbh->prepare($sql);
@@ -59,7 +59,7 @@ if(isset($_GET['id'])){
     $cp = $data['cp'];
     $url = $data['url'];
     $id = htmlentities($_GET['id']);
-    //}
+    }
 }
 //On va vérifier si on reçoit le formulaire (s'il est soumis)
 if(count($_POST)>0){
@@ -103,7 +103,7 @@ if(count($_POST)>0){
     $cp = trim($_POST['cp']);
     $url = trim($_POST['url']);
 
-    if(isset($_GET['edit']) && isset($_GET['id'])){
+    if(isset($_POST['id'])){
         $id = htmlentities($_POST['id']);
     }
     //Si pas d'erreur on insère dans la base de données
