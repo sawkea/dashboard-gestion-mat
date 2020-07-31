@@ -29,8 +29,7 @@ $error = false;
 // Vérifier si on demande on passe en mode edit et non en mode Ajout
 if(isset($_GET['id'])){
     $sql = "SELECT id, nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, facture, manuel_utilisation, boutique_id, site_id FROM produit";
-if(isset($_POST['id'])&& isset($_POST['edit'])){
-    $sql = "SELECT id, nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, facture, manuel_utilisation, boutique, adresse, ville, cp, url FROM produit";
+
     $sth = $dbh->prepare($sql);
     $sth->execute();
     
