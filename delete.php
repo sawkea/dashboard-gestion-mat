@@ -6,7 +6,7 @@ require_once('db.php');
 if(empty($_SESSION['pseudo'])&& empty($_SESSION['mdp'])){
     header('Location: index.php');
 } 
-if(isset($_POST['id'])){
+if(isset($_GET['id'])){
     $sql = 'delete from produit where id= :id';
     $sth = $dbh->prepare($sql);
     $sth->bindParam(':id', $_POST['id'], PDO::PARAM_INT);
