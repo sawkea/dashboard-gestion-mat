@@ -151,11 +151,15 @@ if(count($_POST)>0){
      }
 }
 if(isset($_GET['id'])&& isset($_GET['edit'])){
-    $txtTitle = "Modifier";
+    $txtBtn = "Modifier";
 }else{
-        $txtTitle= "Ajouter";
+        $txtBtn= "Ajouter";
 }
-
+if(isset($_GET['id'])&& isset($_GET['edit'])){
+    $txttitle = "Modification";
+}else{
+        $txttitle= "Ajout";
+}
 
 $loader = new \Twig\Loader\FilesystemLoader('templates');
 $twig = new \Twig\Environment($loader, [
@@ -179,5 +183,6 @@ echo $template->render(array(
     'ville' => $ville,
     'cp' => $cp,
     'url' => $url,
-    'txttitle' => $txtTitle
+    'txtbtn' => $txtBtn,
+    'txttitle' => $txttitle
 ));
