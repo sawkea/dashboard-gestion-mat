@@ -98,10 +98,10 @@ if(count($_POST)>0){
     //$facture = trim($_POST['facture']);
     //$manuel_utilisation = trim($_POST['manuel_utilisation']);
     // $boutique = trim($_POST['boutique']);
-    // $adresse = trim($_POST['adresse']);
-    // $ville = trim($_POST['ville']);
-    // $cp = trim($_POST['cp']);
-    // $url = trim($_POST['url']);
+    $adresse = trim($_POST['adresse']);
+    $ville = trim($_POST['ville']);
+    $cp = trim($_POST['cp']);
+    $url = trim($_POST['url']);
 
     if(isset($_POST['id'])){
         $id = htmlentities($_POST['id']);
