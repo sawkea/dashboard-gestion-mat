@@ -167,26 +167,30 @@ body h2 {
 }
 
 .fiche-produit {
-  background-color: var(--color-secondary);
+  background-color: var(--color-three);
   padding: 1.25rem;
   border-radius: 0.8rem;
   font-family: var(--font-principal);
   margin-top: 3rem;
-  max-width: 50rem;
+  max-width: 35rem;
   margin-left: auto;
   margin-right: auto;
+  border: 0.4px solid #cecdcd;
 }
 .fiche-produit h2 {
-  color: var(--color-three);
+  color: var(--color-first);
   font-size: 1.525rem;
   line-height: 3rem;
   letter-spacing: 3px;
 }
 .fiche-produit .bg-color {
-  background-color: var(--color-first);
+  background-color: var(--color-secondary);
   height: 3rem;
   border-radius: 0.3rem;
   margin-bottom: 1rem;
+}
+.fiche-produit .text-color {
+  color: #949393;
 }
 .fiche-produit form button {
   margin-top: 1.5rem;

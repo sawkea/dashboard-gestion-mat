@@ -13,92 +13,52 @@
         </div>
         
         <div class="fiche-produit">
-            <div class="bg-color"><h2 class="mt-3 mb-5 text-center">Fiche individuelle d'achat matériel</h2></div>
-            <form>
-                <div id="download" class="d-flex flex-column align-items-end">
-                    <div><a href="#photo-ticket">Ticket - achat <span class="fas fa-receipt"></span></a></div>
-                    <div><a href="#manuel">Manuel d'utilisation (pdf) <span class="fas fa-file-alt"></span></a></div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-2">
-                        <label for="id">Id</label>
-                        <input type="number" class="form-control" name="id" required>
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="reference">Réf</label>
-                        <input type="number" class="form-control" name="reference" placeholder="Réf produit..." required>
-                    </div>
-                    <div class="form-group col-md-7">
-                        <label for="nom">Nom</label>
-                        <input type="text" class="form-control" name="nom" placeholder="Nom du produit..."required>
-                    </div>
-              
-                    <!-- CATEGORIE -->
-                    <div class="form-group col-md-4">
-                        <label for="categorie">Catégorie</label>
-                        <select id="categorie" class="form-control" required>
-                        <option selected>Sélectionner la catégorie...</option>
-                        <option>Electroménager</option>
-                        <option>TV-HIFI</option>
-                        <option>Bricolage</option>
-                        <option>Voiture</option>
-                        </select>
-                    </div>
-                    <!-- PRIX -->
-                    <div class="form-group col-md-4">
-                        <label for="prix">Prix</label>
-                        <input type="number" class="form-control" name="prix" placeholder="Entrez un prix..." required>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="date">Date d'achat</label>
-                        <input type="date" class="form-control" name="date" required>
-                    </div>
-                    <!-- DATE D'ACHAT -->
-                    <div class="form-group col-md-4">
-                        <label for="date">Date de fin de garantie</label>
-                        <input type="date" class="form-control" name="date" required>
-                    </div>
-                
-                    <!-- CONSEILS pour l'entretien -->
-                    <div class="form-group col-md-8">
-                    <label for="conseils">Conseils pour l'entretien</label>
-                    <input type="text" class="form-control" name="conseil_entretien" placeholder="Ecrire ici les conseils pour l'entretien..." required>
-                    </div>
-                </div>
-                <!-- SELECTION lieu d'achat -->
-                <div class="input-group mb-3">
-                    <select class="custom-select" id="inputGroupSelect02" required>
-                        <option selected>Sélectionner le lieu d'achat...</option>
-                        <option value="vente_directe">Vente directe</option>
-                        <option value="">E-commerce</option>
-                      </select>
-                      <div class="input-group-append">
-                        <label class="input-group-text" for="inputGroupSelect02">ok</label>
-                      </div>
-                </div>
-                <!-- ADRESSE si la sélection est vente directe -->
-                <div class="form-group">
-                    <label for="inputAddress">Adresse</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="7, rue du Général..." required>
-                </div>
-                <div class="form-row">
-                <div class="form-group col-md-8">
-                    <label for="inputVille">Ville</label>
-                    <input type="text" class="form-control" id="inputVille" placeholder="Entrer votre ville..." required>
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="inputCP">CP</label>
-                    <input type="text" class="form-control" id="inputCP" placeholder="Entrer votre code postal..."required>
-                </div>
-            </div>
-            <!-- URL si la sélection est E-commerce -->
-            <div class="form-group">
-                <label for="url">Entrer l'url</label>
-                <input type="url" name="url" id="url" class="form-control" placeholder="https://example.com" pattern="https://.*" size="30" required>
-            </div>
-            
-                <div class="d-flex justify-content-end"><button type="submit" class="btn btn-primary">Valider</button></div>
-            </form>
+            <div class="bg-color"><h2 class="mt-3 mb-5 text-center">Fiche produit</h2></div>
+            <table class="table">
+               
+                <tbody>
+                  <tr>
+                    <td class="text-right text-color">Nom :</td>
+                    <td class="font-weight-bold">{{ nom }}Perçeuse</td>
+                  </tr>  
+                  <tr>
+                    <td class="text-right text-color">Référence :</td>
+                    <td class="font-weight-bold">{{ reference }}45W687Y479C</td>
+                  </tr>
+                  <tr>
+                    <td class="text-right text-color">Catégorie :</td>
+                    <td class="font-weight-bold">{{ catégorie }}Bricolage</td>
+                  </tr>
+                  <tr>
+                    <td class="text-right text-color">Prix :</td>
+                    <td class="font-weight-bold">{{ catégorie }}150 €</td>
+                  </tr>
+                  <tr>
+                    <td class="text-right text-color">Date d'achat :</td>
+                    <td class="font-weight-bold">{{ date_achat }}17/08/2020</td>
+                  </tr>
+                  <tr>
+                    <td class="text-right text-color">Date fin de garantie :</td>
+                    <td class="font-weight-bold">{{ date_garantie }}17/08/2022</td>
+                  </tr>
+                  <tr>
+                    <td class="text-right text-color">Conseils pour entretien :</td>
+                    <td class="font-weight-bold">{{ conseils }}Bien nettoyer après utilisation.</td>
+                  </tr>
+                  <tr>
+                    <td class="text-right text-color">Lieu d'achat :</td>
+                    <td class="font-weight-bold">{{ vente }} {{ ecommerce }}Vente directe</td>
+                  </tr>
+                  <tr>
+                    <td class="text-right text-color">Adresse :</td>
+                    <td class="font-weight-bold">{{ adresse }} {{ ville }} {{ cp }}22 rue charles Nodier 25000 Besançon</td>
+                  </tr>
+                  <tr>
+                    <td class="text-right text-color">URL :</td>
+                    <td class="font-weight-bold">{{ url }} </td>
+                  </tr>
+                </tbody>
+              </table>
         </div>
     </div>
 {% endblock content %}
