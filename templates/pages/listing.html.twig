@@ -17,7 +17,7 @@
                 <table class="table" data-toggle="table" data-search="true">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col" data-sortable="true">Id</th>
+                            <th scope="col" data-sortable="true"></th>
                             <th scope="col" data-sortable="true">Reference</th>
                             <th scope="col" data-sortable="true">Nom</th>
                             <th scope="col" data-sortable="true">Catégorie</th>
@@ -31,7 +31,7 @@
                     {% for p in resultat %}
                         <tr>
                             <td>
-                                {{ p.id }}
+                                <a href="fiche-materiel.php?fiche-materiel=1&id={{ p.id }}"><span class="fas fa-search-plus"></span></a>
                             </td>
                             <td>
                                 {{ p.reference }}
