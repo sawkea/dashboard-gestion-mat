@@ -98,10 +98,10 @@ if(count($_POST)>0){
     //$facture = trim($_POST['facture']);
     //$manuel_utilisation = trim($_POST['manuel_utilisation']);
     // $boutique = trim($_POST['boutique']);
-    // $adresse = trim($_POST['adresse']);
-    // $ville = trim($_POST['ville']);
-    // $cp = trim($_POST['cp']);
-    // $url = trim($_POST['url']);
+    $adresse = trim($_POST['adresse']);
+    $ville = trim($_POST['ville']);
+    $cp = trim($_POST['cp']);
+    $url = trim($_POST['url']);
 
     if(isset($_POST['id'])){
         $id = htmlentities($_POST['id']);
@@ -143,6 +143,12 @@ if(count($_POST)>0){
 
      }
 }
+if(isset($_GET['id'])&& isset($_GET['edit'])){
+    $txtTitle = "Modifier";
+}else{
+        $txtTitle= "Ajouter";
+}
+
 
 $loader = new \Twig\Loader\FilesystemLoader('templates');
 $twig = new \Twig\Environment($loader, [
@@ -166,5 +172,6 @@ echo $template->render(array(
     'adresse' => $adresse,
     'ville' => $ville,
     'cp' => $cp,
-    'url' => $url
+    'url' => $url,
+    'txttitle' => $txtTitle
 ));
