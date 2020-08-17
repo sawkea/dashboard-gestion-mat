@@ -45,7 +45,7 @@
                     <!-- PRIX -->
                     <div class="form-group col-md-4">
                         <label for="prix">Prix</label>
-                        <input type="number" class="form-control" name="prix" placeholder="Entrez un prix..." value="{{ prix }}" required>
+                        <input type="number" class="form-control" name="prix" placeholder="Entrez un prix..." step="0.01" min="0" value="{{ prix }}" required>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="date">Date d'achat</label>
@@ -82,7 +82,7 @@
                 <div class="form-row">
                 <div class="form-group col-md-8">
                     <label for="inputVille">Ville</label>
-                    <input type="text" class="form-control" id="inputVille" placeholder="Entrer la ville..." name="ville" value="{{ ville }}">
+                    <input type="text" class="form-control" id="inputVille" placeholder="Entrer la ville..." name="ville" value="{{ ville }}" disabled>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputCP">CP</label>
