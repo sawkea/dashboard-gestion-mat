@@ -27,9 +27,9 @@ $url = '';
 $error = false;
 
 // Vérifier si on demande on passe en mode edit et non en mode Ajout
-if(isset($_GET['id'])&&isset($_GET['edit'])&& ($_GET['edit']== 1)){
+if(isset($_GET['id']) && isset($_GET['edit'])&& ($_GET['edit']== 1)){
 
-    $sql = "SELECT id, nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, facture, manuel_utilisation, boutique, url, adresse, ville, cp FROM produit where id = :id";
+    $sql = "SELECT id, nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, facture, manuel_utilisation, url, adresse, ville, cp FROM produit where id = :id";
 
     $sth = $dbh->prepare($sql);
     $sth->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
@@ -41,7 +41,7 @@ if(isset($_GET['id'])&&isset($_GET['edit'])&& ($_GET['edit']== 1)){
     //si pas de résultat de la requête
     //data est booléen
     if(gettype($data) === "boolean"){
-         header('Location: listing.php');
+        header('Location: listing.php');
         exit;
     }
     $nom = $data['nom'];
@@ -53,7 +53,6 @@ if(isset($_GET['id'])&&isset($_GET['edit'])&& ($_GET['edit']== 1)){
     $conseils_entretien = $data['conseils_entretien'];
     $facture = $data['facture'];
     $manuel_utilisation = $data['manuel_utilisation'];
-    $boutique = $data['boutique'];
     $adresse = $data['adresse'];
     $ville = $data['ville'];
     $cp = $data['cp'];
@@ -61,11 +60,17 @@ if(isset($_GET['id'])&&isset($_GET['edit'])&& ($_GET['edit']== 1)){
     $id = htmlentities($_GET['id']);
     
 }
+
 //On va vérifier si on reçoit le formulaire (s'il est soumis)
 if(count($_POST)>0){
 
     if(strlen(trim($_POST['nom'])) !== 0){ //"si en retirant les espace on a plus d'un caractère"
         $nom = trim($_POST['nom']);
+    }else{
+        $error= true;
+    }
+    if(strlen(trim($_POST['reference'])) !== 0){ //"si en retirant les espace on a plus d'un caractère"
+        $reference = trim($_POST['reference']);
     }else{
         $error= true;
     }
@@ -103,15 +108,17 @@ if(count($_POST)>0){
     $cp = trim($_POST['cp']);
     $url = trim($_POST['url']);
 
-    if(isset($_POST['id'])){
-        $id = htmlentities($_POST['id']);
+    if(isset($_GET['id'])){
+        $id = htmlentities($_GET['id']);
     }
+    
     //Si pas d'erreur on insère dans la base de données
     if($error===false){
-        if(isset($_POST['edit']) && isset($_POST['id'])){
-            $sql = "update produit set id=:id, nom=:nom, reference=:reference, categorie_id=:categorie_id, date_achat=:date_achat, fin_garantie=:fin_garantie, prix=:prix, conseils_entretien=:conseils_entretien, facture=:facture, manuel_utilisation=:manuel_utilisation, boutique=:boutique, adresse=:adresse, ville=:ville, cp=:cp, url=:url";
+        var_dump($_POST, $_GET);
+        if(isset($_POST['edit']) && isset($_GET['id'])){
+            $sql = "update produit set nom=:nom, reference=:reference, categorie_id=:categorie_id, date_achat=:date_achat, fin_garantie=:fin_garantie, prix=:prix, conseils_entretien=:conseils_entretien, facture=:facture, manuel_utilisation=:manuel_utilisation,  adresse=:adresse, ville=:ville, cp=:cp, url=:url WHERE id=:id";
         }else{
-            $sql = "INSERT INTO produit(id, nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, facture, manuel_utilisation, boutique, adresse, ville, cp, url) VALUES(:id, :nom, :reference, :categorie_id, :date_achat, :fin_garantie, :prix, :conseils_entretien, :facture, :manuel_utilisation, :boutique, :adresse, :ville, :cp, :url)";
+            $sql = "INSERT INTO produit(nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, facture, manuel_utilisation, adresse, ville, cp, url) VALUES(:nom, :reference, :categorie_id, :date_achat, :fin_garantie, :prix, :conseils_entretien, :facture, :manuel_utilisation, :adresse, :ville, :cp, :url)";
         }
 
         $sth = $dbh->prepare($sql);
@@ -124,31 +131,35 @@ if(count($_POST)>0){
         $sth->bindParam(':conseils_entretien', $conseils_entretien, PDO::PARAM_STR);
         $sth->bindParam(':facture', $facture, PDO::PARAM_STR);
         $sth->bindParam(':manuel_utilisation', $manuel_utilisation, PDO::PARAM_STR);
-        $sth->bindParam(':boutique', $boutique, PDO::PARAM_STR);
+        //$sth->bindParam(':boutique', $boutique, PDO::PARAM_STR);
         $sth->bindParam(':adresse', $adresse, PDO::PARAM_STR);
         $sth->bindParam(':ville', $ville, PDO::PARAM_STR);
         $sth->bindParam(':cp', $cp, PDO::PARAM_STR);
         $sth->bindParam(':url', $url, PDO::PARAM_STR);
 
         //date, INT, FLOAT
-        $sth->bindValue(':id', $id, PDO::PARAM_STR);
         $sth->bindValue(':date_achat', strftime("%Y-%m-%d",strtotime($date_achat)), PDO::PARAM_STR);
         $sth->bindValue(':fin_garantie', strftime("%Y-%m-%d",strtotime($fin_garantie)), PDO::PARAM_STR);
         $sth->bindValue(':prix', $prix, PDO::PARAM_STR);
-        if(isset($_POST['edit']) && isset($_POST['id'])){
+        if(isset($_POST['edit']) && isset($_GET['id'])){
             $sth->bindParam('id', $id, PDO::PARAM_INT);
         }
+        var_dump($nom, $reference, $categorie_id, $conseils_entretien, $facture, $manuel_utilisation, $adresse, $ville, $cp, $url, $date_achat, $fin_garantie, $prix, $id);
         $sth->execute();
         header('Location: listing.php');
 
      }
 }
 if(isset($_GET['id'])&& isset($_GET['edit'])){
-    $txtTitle = "Modifier";
+    $txtBtn = "Modifier";
 }else{
-        $txtTitle= "Ajouter";
+        $txtBtn= "Ajouter";
 }
-
+if(isset($_GET['id'])&& isset($_GET['edit'])){
+    $txttitle = "Modification";
+}else{
+        $txttitle= "Ajout";
+}
 
 $loader = new \Twig\Loader\FilesystemLoader('templates');
 $twig = new \Twig\Environment($loader, [
@@ -168,10 +179,10 @@ echo $template->render(array(
     'conseils_entretien' => $conseils_entretien,
     'facture' => $facture,
     'manuel_utilisation' => $manuel_utilisation,
-    'boutique' => $boutique,
     'adresse' => $adresse,
     'ville' => $ville,
     'cp' => $cp,
     'url' => $url,
-    'txttitle' => $txtTitle
+    'txtbtn' => $txtBtn,
+    'txttitle' => $txttitle
 ));
