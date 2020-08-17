@@ -102,20 +102,20 @@ if(count($_POST)>0){
     //les champs en "null"
     //$facture = trim($_POST['facture']);
     //$manuel_utilisation = trim($_POST['manuel_utilisation']);
-    // $boutique = trim($_POST['boutique']);
+
     $adresse = trim($_POST['adresse']);
     $ville = trim($_POST['ville']);
     $cp = trim($_POST['cp']);
     $url = trim($_POST['url']);
 
-    if(isset($_GET['id'])){
-        $id = htmlentities($_GET['id']);
+    if(isset($_POST['edit'])&& isset($_POST['id'])){
+        $id = htmlentities($_POST['id']);
     }
     
     //Si pas d'erreur on insère dans la base de données
     if($error===false){
-        var_dump($_POST, $_GET);
-        if(isset($_POST['edit']) && isset($_GET['id'])){
+        // var_dump($_POST, $_GET);
+        if(isset($_POST['edit']) && isset($_POST['id'])){
             $sql = "update produit set nom=:nom, reference=:reference, categorie_id=:categorie_id, date_achat=:date_achat, fin_garantie=:fin_garantie, prix=:prix, conseils_entretien=:conseils_entretien, facture=:facture, manuel_utilisation=:manuel_utilisation,  adresse=:adresse, ville=:ville, cp=:cp, url=:url WHERE id=:id";
         }else{
             $sql = "INSERT INTO produit(nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, facture, manuel_utilisation, adresse, ville, cp, url) VALUES(:nom, :reference, :categorie_id, :date_achat, :fin_garantie, :prix, :conseils_entretien, :facture, :manuel_utilisation, :adresse, :ville, :cp, :url)";
@@ -141,10 +141,10 @@ if(count($_POST)>0){
         $sth->bindValue(':date_achat', strftime("%Y-%m-%d",strtotime($date_achat)), PDO::PARAM_STR);
         $sth->bindValue(':fin_garantie', strftime("%Y-%m-%d",strtotime($fin_garantie)), PDO::PARAM_STR);
         $sth->bindValue(':prix', $prix, PDO::PARAM_STR);
-        if(isset($_POST['edit']) && isset($_GET['id'])){
+        if(isset($_POST['edit']) && isset($_POST['id'])){
             $sth->bindParam('id', $id, PDO::PARAM_INT);
         }
-        var_dump($nom, $reference, $categorie_id, $conseils_entretien, $facture, $manuel_utilisation, $adresse, $ville, $cp, $url, $date_achat, $fin_garantie, $prix, $id);
+        //var_dump($nom, $reference, $categorie_id, $conseils_entretien, $facture, $manuel_utilisation, $adresse, $ville, $cp, $url, $date_achat, $fin_garantie, $prix, $id);
         $sth->execute();
         header('Location: listing.php');
 
