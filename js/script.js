@@ -3,7 +3,7 @@ console.log('script de page');
 // Selectionne le button no 
 const btnNo = document.getElementById('modal_btn_no');
 const btnYes = document.getElementById('modal_btn_yes');
-
+console.log(btnNo);
 
 //Mettre un ecouteur sur l'ensemble du doc
 document.addEventListener('click', function(e){
@@ -57,8 +57,4 @@ btnYes.addEventListener('click', function(){
     }
 });
 
-
-// sélectionner les input de selection les mettre non griser selon la selection
-
-// essai script
 

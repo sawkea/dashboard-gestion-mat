@@ -22,7 +22,7 @@
                     <div><a href="#manuel" download="Manuel d'utilisation"{{ manuel_utilisation }}>Manuel d'utilisation (pdf) </a><span class="fas fa-file-alt" ></span></a></div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-5">
                         <label for="reference">Réf</label>
                         <input type="text" class="form-control" name="reference" placeholder="Réf produit..." value="{{ reference }}" required>
                     </div>
@@ -32,7 +32,7 @@
                     </div>
               
                     <!-- CATEGORIE -->
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-7">
                         <label for="categorie">Catégorie</label>
                         <select id="categorie" class="form-control" value="{{ categorie_id }}" name="categorie_id" required>
                         <option selected>Sélectionner la catégorie...</option>
@@ -42,58 +42,58 @@
                         <option value="4">Voiture</option>
                         </select>
                     </div>
+                    <div class="col-md-1 add-categorie"><a href="add-categorie.php"><span class="fas fa-plus-circle"></span></a></div>
                     <!-- PRIX -->
                     <div class="form-group col-md-4">
                         <label for="prix">Prix</label>
                         <input type="number" class="form-control" name="prix" placeholder="Entrez un prix..." step="0.01" min="0" value="{{ prix }}" required>
                     </div>
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-6">
                         <label for="date">Date d'achat</label>
                         <input type="date" class="form-control" name="date_achat" value="{{ date_achat }}" required>
                     </div>
                     <!-- DATE D'ACHAT -->
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-6">
                         <label for="date">Date de fin de garantie</label>
                         <input type="date" class="form-control" name="fin_garantie" value="{{ fin_garantie }}" required>
                     </div>
                 
                     <!-- CONSEILS pour l'entretien -->
-                    <div class="form-group col-md-8">
+                    <div class="form-group col-md-12">
                     <label for="conseils">Conseils pour l'entretien</label>
                     <input type="text" class="form-control" name="conseils_entretien" placeholder="Ecrire ici les conseils pour l'entretien..." value="{{ conseils_entretien }}" required>
                     </div>
                 </div>
                 
                 <!-- SELECTION lieu d'achat -->
+                <label for="lieu">Lieu d'achat</label>
                 <div class="input-group mb-3">
-                    <select name="select-cat" class="custom-select" id="inputGroupSelect02" required>
+                    <select name="select-cat" class="custom-select" id="selectlieu" required>
                         <option selected>Sélectionner le lieu d'achat...</option>
-                        <option value="vente_directe">Vente directe</option>
-                        <option value="e-commerce">E-commerce</option>
+                        <option value="boutique">Vente directe</option>
+                        <option value="internet">E-commerce</option>
                       </select>
-                      <div class="input-group-append">
-                        <label class="input-group-text" for="inputGroupSelect02">ok</label>
-                      </div>
+                      
                 </div>
                 <!-- ADRESSE si la sélection est vente directe -->
                 <div class="form-group">
                     <label for="inputAddress">Adresse</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="7, rue du Général..." name="adresse" value="{{ adresse }}"  >
+                    <input type="text" class="form-control" id="inputAddress" placeholder="7, rue du Général..." name="adresse" value="{{ adresse }}" >
                 </div>
                 <div class="form-row">
                 <div class="form-group col-md-8">
                     <label for="inputVille">Ville</label>
-                    <input type="text" class="form-control" id="inputVille" placeholder="Entrer la ville..." name="ville" value="{{ ville }}" >
+                    <input type="text" class="form-control" id="inputVille" placeholder="Entrer la ville..." name="ville" value="{{ ville }}">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputCP">CP</label>
-                    <input type="text" class="form-control" id="inputCP" placeholder="Entrer le code postal..." name="cp" value="{{ cp }}" disabled="">
+                    <input type="text" class="form-control" id="inputCP" placeholder="Entrer le code postal..." name="cp" value="{{ cp }}">
                 </div>
             </div>
             <!-- URL si la sélection est E-commerce -->
             <div class="form-group">
                 <label for="url">Entrer l'url</label>
-                <input type="url" name="url" id="url" class="form-control" placeholder="https://example.com" pattern="https://.*" size="30" value="{{ url }}" disabled="">
+                <input type="url" name="url" id="boxurl" class="form-control" placeholder="https://example.com" pattern="https://.*" size="30" value="{{ url }}">
             </div>
                 <input type="hidden" name="edit" value="1">
                 <input type="hidden" name="id" value="{{ id }}">
@@ -104,6 +104,10 @@
         </div>
     </div>
 {% endblock content %}
+{% block javascript %}
+            
+            <script src="js/script-edit.js"></script>
+        {% endblock javascript %}
 
 
     
