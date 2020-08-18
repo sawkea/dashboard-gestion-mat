@@ -56,3 +56,7 @@ btnYes.addEventListener('click', function(){
         location.href = elementToDelete.getAttribute('href');
     }
 });
+
+
+// sélectionner les input de selection les mettre non griser selon la selection
+
