@@ -110,13 +110,15 @@ if(count($_POST)>0){
 
     if(isset($_POST['edit'])&& isset($_POST['id'])){
         $id = htmlentities($_POST['id']);
+        
     }
     
     //Si pas d'erreur on insère dans la base de données
     if($error===false){
-        // var_dump($_POST, $_GET);
+        
         if(isset($_POST['edit']) && isset($_POST['id'])){
-            $sql = "update produit set nom=:nom, reference=:reference, categorie_id=:categorie_id, date_achat=:date_achat, fin_garantie=:fin_garantie, prix=:prix, conseils_entretien=:conseils_entretien, facture=:facture, manuel_utilisation=:manuel_utilisation,  adresse=:adresse, ville=:ville, cp=:cp, url=:url WHERE id=:id";
+            var_dump($_POST['edit'], $_POST['id']);
+            $sql = "UPDATE produit SET nom=:nom, reference=:reference, categorie_id=:categorie_id, date_achat=:date_achat, fin_garantie=:fin_garantie, prix=:prix, conseils_entretien=:conseils_entretien, facture=:facture, manuel_utilisation=:manuel_utilisation,  adresse=:adresse, ville=:ville, cp=:cp, url=:url WHERE id=:id";
         }else{
             $sql = "INSERT INTO produit(nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, facture, manuel_utilisation, adresse, ville, cp, url) VALUES(:nom, :reference, :categorie_id, :date_achat, :fin_garantie, :prix, :conseils_entretien, :facture, :manuel_utilisation, :adresse, :ville, :cp, :url)";
         }
