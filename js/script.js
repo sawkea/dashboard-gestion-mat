@@ -60,3 +60,5 @@ btnYes.addEventListener('click', function(){
 
 // sélectionner les input de selection les mettre non griser selon la selection
 
+// essai script
+
