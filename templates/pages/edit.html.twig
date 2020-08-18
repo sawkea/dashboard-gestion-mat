@@ -66,10 +66,10 @@
                 
                 <!-- SELECTION lieu d'achat -->
                 <div class="input-group mb-3">
-                    <select name="select-cat" class="custom-select" id="inputGroupSelect02" required>
+                    <select name="select-cat" class="custom-select" id="selectlieu" required>
                         <option selected>Sélectionner le lieu d'achat...</option>
-                        <option value="vente_directe">Vente directe</option>
-                        <option value="e-commerce">E-commerce</option>
+                        <option value="boutique">Vente directe</option>
+                        <option value="internet">E-commerce</option>
                       </select>
                       <div class="input-group-append">
                         <label class="input-group-text" for="inputGroupSelect02">ok</label>
@@ -78,22 +78,22 @@
                 <!-- ADRESSE si la sélection est vente directe -->
                 <div class="form-group">
                     <label for="inputAddress">Adresse</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="7, rue du Général..." name="adresse" value="{{ adresse }}"  >
+                    <input type="text" class="form-control" id="inputAddress" placeholder="7, rue du Général..." name="adresse" value="{{ adresse }}" >
                 </div>
                 <div class="form-row">
                 <div class="form-group col-md-8">
                     <label for="inputVille">Ville</label>
-                    <input type="text" class="form-control" id="inputVille" placeholder="Entrer la ville..." name="ville" value="{{ ville }}" >
+                    <input type="text" class="form-control" id="inputVille" placeholder="Entrer la ville..." name="ville" value="{{ ville }}">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputCP">CP</label>
-                    <input type="text" class="form-control" id="inputCP" placeholder="Entrer le code postal..." name="cp" value="{{ cp }}" disabled="">
+                    <input type="text" class="form-control" id="inputCP" placeholder="Entrer le code postal..." name="cp" value="{{ cp }}">
                 </div>
             </div>
             <!-- URL si la sélection est E-commerce -->
             <div class="form-group">
                 <label for="url">Entrer l'url</label>
-                <input type="url" name="url" id="url" class="form-control" placeholder="https://example.com" pattern="https://.*" size="30" value="{{ url }}" disabled="">
+                <input type="url" name="url" id="boxurl" class="form-control" placeholder="https://example.com" pattern="https://.*" size="30" value="{{ url }}">
             </div>
                 <!--<input type="hidden" name="edit" value="1">-->
                 <input type="hidden" name="id" value="{{ id }}">
@@ -104,6 +104,10 @@
         </div>
     </div>
 {% endblock content %}
+{% block javascript %}
+            
+            <script src="js/script-edit.js"></script>
+        {% endblock javascript %}
 
 
     
