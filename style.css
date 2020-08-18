@@ -248,6 +248,10 @@ body h2 {
   margin-top: 2rem;
 }
 
+.add-categorie {
+  padding-top: 2.1rem;
+}
+
 .fiche-produit #upload button {
   background-color: var(--color-for);
 }
