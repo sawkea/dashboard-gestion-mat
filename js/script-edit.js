@@ -14,17 +14,18 @@ console.log(boxurl);
 // FONCTION POUR GRISER LES CHAMPS SELON LE CHOIX 
 // Quand une nouvelle <option> est selectionnée
 selectElem.addEventListener('change', function() {
-  // si cetteoption est égale à la valeur boutique
+  // si cette option est égale à la valeur boutique
   if (this.value == "boutique") {
       // alors on ajoute l'attribut disabled
     boxurl.setAttribute("disabled", "");
   }
   else {
-    // sinon on enlève l'attribut disabled
+    // sinon on enlève l'attribut disabled pour url et on ajoute pour les autres
     boxurl.removeAttribute("disabled");
     inputAddress.setAttribute("disabled", "");
     inputVille.setAttribute("disabled", "");
     inputCP.setAttribute("disabled", "");
     }
 });
+
 
