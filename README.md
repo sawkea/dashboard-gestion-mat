@@ -8,7 +8,7 @@ Création d'un dashboard sécurisé avec gestion du matériel - Travail en binô
 	* Supprimer un produit
 	* Ajouter un produit
 
-## Pour chaque produit je doit rentrer les informations suivantes
+## Pour chaque produit je dois rentrer les informations suivantes
 - Lieux d'achat (En vente directe ou e-commerce)
 		- Si vente directe - Possibilité de saisir l'adresse
 		- Si e-commerce - Possibilté de saisir l'url du e-commerce
