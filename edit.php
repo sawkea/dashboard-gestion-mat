@@ -16,7 +16,7 @@ $date_achat  = '';
 $fin_garantie = '';
 $prix = '';
 $conseils_entretien = '';
-$facture = '';
+$ticket = '';
 $manuel_utilisation = '';
 $boutique = '';
 $adresse = '';
@@ -29,7 +29,7 @@ $error = false;
 // Vérifier si on demande on passe en mode edit et non en mode Ajout
 if(isset($_GET['id']) && isset($_GET['edit'])&& ($_GET['edit']== 1)){
 
-    $sql = "SELECT id, nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, facture, manuel_utilisation, url, adresse, ville, cp FROM produit where id = :id";
+    $sql = "SELECT id, nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, ticket, manuel_utilisation, url, adresse, ville, cp FROM produit where id = :id";
 
     $sth = $dbh->prepare($sql);
     $sth->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
@@ -51,7 +51,7 @@ if(isset($_GET['id']) && isset($_GET['edit'])&& ($_GET['edit']== 1)){
     $fin_garantie = $data['fin_garantie'];
     $prix = $data['prix'];
     $conseils_entretien = $data['conseils_entretien'];
-    $facture = $data['facture'];
+    $ticket = $data['ticket'];
     $manuel_utilisation = $data['manuel_utilisation'];
     $adresse = $data['adresse'];
     $ville = $data['ville'];
@@ -99,28 +99,64 @@ if(count($_POST)>0){
     }else{
         $error= true;
     }
+    //var_dump($_FILES);
+    if(isset($_FILES['ticket'])&& !empty($_FILES['ticket']['name'])){
+        $tailleMax = 2097152;
+        $extensionsValides = array('jpg', 'jpeg', 'pdf', 'doc', 'docx', 'txt');
+        if($_FILES['ticket']['size'] <= $tailleMax){
+            $extensionUpload = strtolower(substr(strrchr($_FILES['ticket']['name'], '.'),1));
+            if(in_array($extensionUpload, $extensionsValides)){
+                $chemin = "produit/ticket/".$reference.".".$extensionUpload;
+                //var_dump($chemin);
+                $resultat = move_uploaded_file($_FILES['ticket']['tmp_name'], $chemin);
+                if($resultat){
+                    $ticket = $chemin;
+                }else{
+                    $msgUploadTicket = "une erreur s'est produite";
+                }
+            }else{
+                $msgUploadTicket = "votre format de document est invalide";
+            }
+        }
+    }
+    if(isset($_FILES['manuel_utilisation'])&& !empty($_FILES['manuel_utilisation']['name'])){
+        $tailleMax = 2097152;
+        $extensionsValides = array('jpg', 'jpeg', 'pdf', 'doc', 'docx', 'txt');
+        if($_FILES['manuel_utilisation']['size'] <= $tailleMax){
+            $extensionUpload = strtolower(substr(strrchr($_FILES['manuel_utilisation']['name'], '.'),1));
+            if(in_array($extensionUpload, $extensionsValides)){
+                $chemin = "produit/manuel/".$reference.".".$extensionUpload;
+                //var_dump($chemin);
+                $resultat = move_uploaded_file($_FILES['manuel_utilisation']['tmp_name'], $chemin);
+                if($resultat){
+                    $manuel_utilisation = $chemin;
+                }else{
+                    $msgUploadmanuel = "une erreur s'est produite";
+                }
+            }else{
+                $msgUploadmanuel = "votre format de document est invalide";
+            }
+        }
+    }
     //les champs en "null"
-    //$facture = trim($_POST['facture']);
-    //$manuel_utilisation = trim($_POST['manuel_utilisation']);
-
     $adresse = trim($_POST['adresse']);
     $ville = trim($_POST['ville']);
-    $cp = trim($_POST['cp']);
-    $url = trim($_POST['url']);
+    // $cp = trim($_POST['cp']);
+    // $url = trim($_POST['url']);
 
-    if(isset($_POST['edit'])&& isset($_POST['id'])){
+    if(isset($_POST['id']) && !empty($_POST['id'])){
         $id = htmlentities($_POST['id']);
         
     }
-    
     //Si pas d'erreur on insère dans la base de données
     if($error===false){
         
-        if(isset($_POST['edit']) && isset($_POST['id'])){
-            var_dump($_POST['edit'], $_POST['id']);
-            $sql = "UPDATE produit SET nom=:nom, reference=:reference, categorie_id=:categorie_id, date_achat=:date_achat, fin_garantie=:fin_garantie, prix=:prix, conseils_entretien=:conseils_entretien, facture=:facture, manuel_utilisation=:manuel_utilisation,  adresse=:adresse, ville=:ville, cp=:cp, url=:url WHERE id=:id";
+        if(isset($_POST['id']) && !empty($_POST['id'])){
+            //var_dump($_POST['edit'], $_POST['id']);
+            $sql = "UPDATE produit SET nom=:nom, reference=:reference, categorie_id=:categorie_id, date_achat=:date_achat, fin_garantie=:fin_garantie, prix=:prix, conseils_entretien=:conseils_entretien, ticket=:ticket, manuel_utilisation=:manuel_utilisation,  adresse=:adresse, ville=:ville, cp=:cp, url=:url WHERE id=:id";
         }else{
-            $sql = "INSERT INTO produit(nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, facture, manuel_utilisation, adresse, ville, cp, url) VALUES(:nom, :reference, :categorie_id, :date_achat, :fin_garantie, :prix, :conseils_entretien, :facture, :manuel_utilisation, :adresse, :ville, :cp, :url)";
+            $sql = "INSERT INTO produit(nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, ticket, manuel_utilisation, adresse, ville, cp, url) VALUES(:nom, :reference, :categorie_id, :date_achat, :fin_garantie, :prix, :conseils_entretien, :ticket, :manuel_utilisation, :adresse, :ville, :cp, :url)";
+            var_dump($sql);
         }
 
         $sth = $dbh->prepare($sql);
@@ -131,7 +167,7 @@ if(count($_POST)>0){
         $sth->bindParam(':reference', $reference, PDO::PARAM_STR);
         $sth->bindParam(':categorie_id', $categorie_id, PDO::PARAM_STR);
         $sth->bindParam(':conseils_entretien', $conseils_entretien, PDO::PARAM_STR);
-        $sth->bindParam(':facture', $facture, PDO::PARAM_STR);
+        $sth->bindParam(':ticket', $ticket, PDO::PARAM_STR);
         $sth->bindParam(':manuel_utilisation', $manuel_utilisation, PDO::PARAM_STR);
         //$sth->bindParam(':boutique', $boutique, PDO::PARAM_STR);
         $sth->bindParam(':adresse', $adresse, PDO::PARAM_STR);
@@ -143,10 +179,10 @@ if(count($_POST)>0){
         $sth->bindValue(':date_achat', strftime("%Y-%m-%d",strtotime($date_achat)), PDO::PARAM_STR);
         $sth->bindValue(':fin_garantie', strftime("%Y-%m-%d",strtotime($fin_garantie)), PDO::PARAM_STR);
         $sth->bindValue(':prix', $prix, PDO::PARAM_STR);
-        if(isset($_POST['edit']) && isset($_POST['id'])){
+        if(isset($_POST['id']) && !empty($_POST['id'])){
             $sth->bindParam('id', $id, PDO::PARAM_INT);
         }
-        //var_dump($nom, $reference, $categorie_id, $conseils_entretien, $facture, $manuel_utilisation, $adresse, $ville, $cp, $url, $date_achat, $fin_garantie, $prix, $id);
+        //var_dump($nom, $reference, $categorie_id, $conseils_entretien, $ticket, $manuel_utilisation, $adresse, $ville, $cp, $url, $date_achat, $fin_garantie, $prix, $id);
         $sth->execute();
         header('Location: listing.php');
 
@@ -179,7 +215,7 @@ echo $template->render(array(
     'fin_garantie' => $fin_garantie,
     'prix' => $prix,
     'conseils_entretien' => $conseils_entretien,
-    'facture' => $facture,
+    'ticket' => $ticket,
     'manuel_utilisation' => $manuel_utilisation,
     'adresse' => $adresse,
     'ville' => $ville,
