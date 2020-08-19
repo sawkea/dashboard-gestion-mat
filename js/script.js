@@ -1,4 +1,4 @@
-console.log('script de page');
+
 
 // Selectionne le button no 
 const btnNo = document.getElementById('modal_btn_no');
