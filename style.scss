@@ -60,9 +60,10 @@ body{
         .error{
             color: var(--color-incorrect);
             text-align: center;
+            font-size: 0.85rem;
+            font-weight: bold;
         }
         button{
-           
             margin-left: 22%;
             background-color: var(--color-for);
             border: none;
