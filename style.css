@@ -35,7 +35,7 @@ body h2 {
 
 #form-login {
   position: absolute;
-  top: 20%;
+  top: 15%;
   width: 100%;
 }
 
@@ -44,7 +44,7 @@ body h2 {
   border-radius: 1rem;
   width: 22rem;
   font-family: var(--font-principal);
-  height: 30rem;
+  height: 32rem;
   margin-left: auto;
   margin-right: auto;
   padding: 1rem;
@@ -69,10 +69,11 @@ body h2 {
 #form-login .login .error {
   color: var(--color-incorrect);
   text-align: center;
+  font-size: 0.85rem;
+  font-weight: bold;
 }
 
 #form-login .login button {
-  margin-top: 1rem;
   margin-left: 22%;
   background-color: var(--color-for);
   border: none;
@@ -102,14 +103,33 @@ body h2 {
   color: var(--color-incorrect);
 }
 
-/* Boite modal (button suppression) */
+/* Boite modal (button suppression d'une ligne) */
+#modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* mettre ce fond pour ne pas avoir acces aux autres éléments */
+  background-color: rgba(0, 0, 0, 0.45);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 #modal.hidden {
   display: none;
 }
 
 #modal_dialogue {
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
   padding: 20px;
   background-color: white;
   min-height: 100px;
@@ -262,5 +282,16 @@ body h2 {
 
 .fiche-produit .custom-file-input:lang(en) ~ .custom-file-label::after {
   content: "Télécharger";
+}
+
+.pseudo {
+  font-style: italic;
+  text-transform: uppercase;
+  color: var(--color-first);
+}
+
+.connexion-pseudo {
+  font-weight: 700;
+  color: var(--color-for);
 }
 /*# sourceMappingURL=style.css.map */
