@@ -77,12 +77,13 @@ body{
 }
 
 // listing.php
+// couleur table 
 .table .thead-dark th {
     color: #fff;
     background-color: var(--color-for);
     border-color: var(--color-three);
 }
-
+// bouton deconnexion 
 .fa-plus-circle, .fa-power-off{
     font-size: 2rem;
     margin-right: 1rem;
@@ -94,7 +95,8 @@ body{
     color: var(--color-incorrect);
 }
 
-/* Boite modal (button suppression) */
+
+/* Boite modal (button suppression d'une ligne) */
 #modal{
     position: absolute;
     top: 0;
@@ -162,7 +164,7 @@ body{
 
 
 
-
+// fiche produit
 // fiche-materiel.php
 .fa-arrow-alt-circle-left{
     font-size: 2rem;
@@ -197,7 +199,7 @@ body{
         color: rgb(148, 147, 147);
     }
      
-    
+    // formulaire de la fiche produit edit et add
     form{
         button{
             margin-top: 1.5rem;
@@ -242,7 +244,6 @@ body{
     padding-top: 2.1rem;
 }
 // ajout.php
-
 .fiche-produit {
     #upload{
         button{
@@ -254,9 +255,20 @@ body{
     }
     .custom-file-input:lang(en)~.custom-file-label::after {
         content: "Télécharger";
-    
     }
     
   
   
+}
+// Phrase de l'utilisateur connecté
+.pseudo{
+    font-style: italic;
+    text-transform: uppercase;
+    color: var(--color-first);
+    
+    
+}
+.connexion-pseudo{
+    font-weight: 700;
+    color: var(--color-for)
 }
