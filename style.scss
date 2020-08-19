@@ -33,7 +33,7 @@ body{
 }
 #form-login{
     position: absolute;
-    top: 20%;
+    top: 15%;
     width: 100%;
     
     .login{
@@ -42,7 +42,7 @@ body{
         border-radius: 1rem;
         width: 22rem;
         font-family: var(--font-principal);
-        height: 30rem;
+        height: 32rem;
         margin-left: auto;
         margin-right: auto;
         padding: 1rem;
@@ -62,7 +62,7 @@ body{
             text-align: center;
         }
         button{
-            margin-top: 1rem;
+           
             margin-left: 22%;
             background-color: var(--color-for);
             border: none;
