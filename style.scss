@@ -95,20 +95,32 @@ body{
 }
 
 /* Boite modal (button suppression) */
+#modal{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* mettre ce fond pour ne pas avoir acces aux autres éléments */
+    background-color: rgba(0,0,0,0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 #modal.hidden{
     display: none;
 }
 
 #modal_dialogue{
     width: 100%;
-    max-width: 500px;
+    max-width: 400px;
     padding: 20px;
     background-color: white;
     min-height: 100px;
     border-radius: 6px;
     box-shadow: 10px 14px 24px -6px rgba(0,0,0,0.33);
     
-    #warning span{color: rgb(223, 0, 0);font-size: 1.5rem;margin-right: 0.75rem;}
+    #warning span{color: rgb(223, 0, 0);font-size: 1.5rem; margin-right: 0.75rem;}
     #warning{font-family: var(--font-principal);color: rgb(223, 0, 0); font-weight: bold; font-size: 1.5rem;text-align:center;border-bottom:solid var(--color-action) 0.25px;}
 }
 
