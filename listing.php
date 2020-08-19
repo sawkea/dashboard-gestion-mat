@@ -20,8 +20,8 @@ function liste_produit(){
 }
 
 
-
 $template = $twig->load('pages/listing.html.twig');
 echo $template->render(array(
     'resultat' => liste_produit(),
+    'pseudo' => $_SESSION['pseudo']
 ));
