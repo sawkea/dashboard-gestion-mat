@@ -1,77 +1,30 @@
 # dashboard-gestion-mat
 Création d'un dashboard sécurisé avec gestion du matériel - Travail en binôme (FRONT / BACK) avec LisaDevoghelaere
 
-## Création du modèle de données sur papier
-Ébauche sur papier du modèle de données avec les différentes tables et relations
-photo
+## Ce dasboard devra être sécurisé par un système de login
+- Il doit permettre de :
+	* lister les produits
+	* Modifier un produit
+	* Supprimer un produit
+	* Ajouter un produit
 
-## Trouver un Nom et logo pour le projet
-DGMA "Dashboard Gestion Matériel Achat"
+## Pour chaque produit je doit rentrer les informations suivantes
+- Lieux d'achat (En vente directe ou e-commerce)
+		- Si vente directe - Possibilité de saisir l'adresse
+		- Si e-commerce - Possibilté de saisir l'url du e-commerce
+	- Nom du produit
+	- Référence du produit
+	- Catégorie (Electroménager, TV-HIFI, Bricolage, Voiture....)
+		- Le produit n'appartiendra qu'à une seule catégorie
+	- Date d'achat
+	- Date de fin de garantie
+	- Prix
+	- Zone de saisie pour rentrer toutes les conseils d'entretiens du produit
+	- Photo du tiket d'achat
+	- Manuel d'utlisation (Pas obligatoire si existe pas)
 
-## FRONT - Sonia
+## Formulaires
+- seront validés par JS
 
-### Création sur papier des différentes pages à créer
-photo
-
-### Préparation des fichiers de bases avec twig
-1. mise en place de twig avec composer et vendor
-2. Création de la page index.php
-
-### dossier templates
-Création des pages
-* base.html.twig
-* index.html.twig
-* listing.html.twig
-* fiche-materiel.html.twig
-* ajout.html.twig
-
-ex: page ajout.html.twig
-    {% extends "base.html.twig" %}
-    {% block title %}Listing{% endblock title %}
-    {% block content %}
-        <h1>Ajout d'un nouveau matériel</h1>
-    {% endblock content %}
-
-### dossier php
-Création des pages
-* ajout.php
-* listing.php
-* fiche-materiel.php
-
-ex: page ajout.php
-    <?php 
-    require_once 'vendor/autoload.php';
-    $loader = new \Twig\Loader\FilesystemLoader('templates');
-    $twig = new \Twig\Environment($loader, [
-        'cache' => false,
-    ]);
-    $template = $twig->load('pages/ajout.html.twig');
-    echo $template->render();
-
-### dossier js
-* création de la page script.js
-
-### Relation entre les pages 
-* Effectuer les chemins de relations entre fichiers twig et php 
-
-ex: 
-    $template = $twig->load('pages/ajout.html.twig');
-    echo $template->render();
-
-### Sass
-Mise en place de sass avec fichier style.scss
-
-## Création du form login
-* Création du formulaire de login en HTML avec style 
-* Création du logo
-
-## Création de la page listing
-* Création d'un formulaire qui va lister les achats de matériels dans la société DGMA
-
-## Création de la page fiche-produit
-* Création du formulaire 
-* ajout des styles et responsive ok
--------------------------------------------
-## BACK - Lisa
-
-
+### Technos
+- PHP, TWIG, SASS, GIT, JS, HTML, CSS, FRAMEWORK CSS (optionnel)
