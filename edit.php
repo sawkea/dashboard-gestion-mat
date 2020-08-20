@@ -205,6 +205,8 @@ $twig = new \Twig\Environment($loader, [
 ]);
 
 
+
+
 $template = $twig->load('pages/edit.html.twig');
 echo $template->render(array(
     'id' => $id,
@@ -222,5 +224,12 @@ echo $template->render(array(
     'cp' => $cp,
     'url' => $url,
     'txtbtn' => $txtBtn,
-    'txttitle' => $txttitle
+    'txttitle' => $txttitle,
+    
+    
+    
 ));
+
+
+
+
