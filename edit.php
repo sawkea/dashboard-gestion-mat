@@ -25,7 +25,6 @@ $cp = '';
 $url = '';
 
 $error = false;
-
 // Vérifier si on demande on passe en mode edit et non en mode Ajout
 if(isset($_GET['id']) && isset($_GET['edit'])&& ($_GET['edit']== 1)){
 

@@ -28,8 +28,8 @@ $url = '';
 $error = false;
 
 //condition pour savoir si l'on a bien reçu l'id
-if(isset($_GET['id'])){
-    $sql = "SELECT p.id, p.reference, p.nom, c.nom AS categorie, p.prix, p.date_achat, p.fin_garantie, p.conseils_entretien, p.ticket, p.manuel_utilisation, p.url, p.adresse, p.ville, p.cp FROM produit AS p INNER JOIN categorie AS c ON p.categorie_id = c.id";
+if(isset($_GET['id']) && !empty($_GET['id'])){
+    $sql = "SELECT p.id, p.reference, p.nom, c.nom AS categorie, p.prix, p.date_achat, p.fin_garantie, p.conseils_entretien, p.ticket, p.manuel_utilisation, p.url, p.adresse, p.ville, p.cp FROM produit AS p INNER JOIN categorie AS c ON p.categorie_id = c.id WHERE p.id = :id";
 
     $sth = $dbh->prepare($sql);
     $sth->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
@@ -57,6 +57,12 @@ if(isset($_GET['id'])){
     $cp = $data['cp'];
     $url = $data['url'];
     $id = htmlentities($_GET['id']);
+
+    if(strlen(trim($adresse)) !== 0){
+        $vente = "Vente directe";
+    }else{
+        $vente = "E-commerce";
+    }
 }
 
 $loader = new \Twig\Loader\FilesystemLoader('templates');
@@ -80,5 +86,6 @@ echo $template->render(array(
     'adresse' => $adresse,
     'ville' => $ville,
     'cp' => $cp,
-    'url' => $url
+    'url' => $url,
+    'vente' => $vente
 ));
