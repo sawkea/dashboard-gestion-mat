@@ -8,6 +8,12 @@ require_once('db.php');
 if(empty($_SESSION['pseudo'])){
     header('Location: index.php');
 }
+$new_categorie='';
+$error = false;
+
+if(isset($_POST['new-categorie']) && !empty($_POST['new-categorie'])){
+
+}
 
 $loader = new \Twig\Loader\FilesystemLoader('templates');
 $twig = new \Twig\Environment($loader, [
