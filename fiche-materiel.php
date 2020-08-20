@@ -57,6 +57,12 @@ if(isset($_GET['id'])){
     $cp = $data['cp'];
     $url = $data['url'];
     $id = htmlentities($_GET['id']);
+
+    if(strlen(trim($adresse)) !== 0){
+        $vente = "Vente directe";
+    }else{
+        $vente = "E-commerce";
+    }
 }
 
 $loader = new \Twig\Loader\FilesystemLoader('templates');
@@ -80,5 +86,6 @@ echo $template->render(array(
     'adresse' => $adresse,
     'ville' => $ville,
     'cp' => $cp,
-    'url' => $url
+    'url' => $url,
+    'vente' => $vente
 ));
