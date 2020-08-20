@@ -8,6 +8,56 @@ require_once('db.php');
 if(empty($_SESSION['pseudo'])){
     header('Location: index.php');
 }
+//initialisation des variables
+$id = '';
+$nom = '';
+$reference = '';
+$categorie_id = '';
+$date_achat  = '';
+$fin_garantie = '';
+$prix = '';
+$conseils_entretien = '';
+$ticket = '';
+$manuel_utilisation = '';
+$boutique = '';
+$adresse = '';
+$ville = '';
+$cp = '';
+$url = '';
+
+$error = false;
+
+//condition pour savoir si l'on a bien reçu l'id
+if(isset($_GET['id'])){
+    $sql = "SELECT id, nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, ticket, manuel_utilisation, url, adresse, ville, cp FROM produit where id = :id";
+
+    $sth = $dbh->prepare($sql);
+    $sth->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
+        
+    $sth->execute();
+    $data = $sth->fetch(PDO::FETCH_ASSOC);
+    //Condition pour sécuriser le formulaire 
+    //si pas de résultat de la requête
+    //data est booléen
+    if(gettype($data) === "boolean"){
+        header('Location: listing.php');
+        exit;
+    }
+    $nom = $data['nom'];
+    $reference = $data['reference'];
+    $categorie_id = $data['categorie_id'];
+    $date_achat  = $data['date_achat'];
+    $fin_garantie = $data['fin_garantie'];
+    $prix = $data['prix'];
+    $conseils_entretien = $data['conseils_entretien'];
+    $ticket = $data['ticket'];
+    $manuel_utilisation = $data['manuel_utilisation'];
+    $adresse = $data['adresse'];
+    $ville = $data['ville'];
+    $cp = $data['cp'];
+    $url = $data['url'];
+    $id = htmlentities($_GET['id']);
+}
 
 $loader = new \Twig\Loader\FilesystemLoader('templates');
 $twig = new \Twig\Environment($loader, [
