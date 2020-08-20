@@ -29,7 +29,7 @@ $error = false;
 
 //condition pour savoir si l'on a bien reçu l'id
 if(isset($_GET['id'])){
-    $sql = "SELECT id, nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, ticket, manuel_utilisation, url, adresse, ville, cp FROM produit where id = :id";
+    $sql = "SELECT p.id, p.reference, p.nom, c.nom AS categorie, p.prix, p.date_achat, p.fin_garantie, p.conseils_entretien, p.ticket, p.manuel_utilisation, p.url, p.adresse, p.ville, p.cp FROM produit AS p INNER JOIN categorie AS c ON p.categorie_id = c.id";
 
     $sth = $dbh->prepare($sql);
     $sth->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
@@ -45,7 +45,7 @@ if(isset($_GET['id'])){
     }
     $nom = $data['nom'];
     $reference = $data['reference'];
-    $categorie_id = $data['categorie_id'];
+    $categorie_id = $data['categorie'];
     $date_achat  = $data['date_achat'];
     $fin_garantie = $data['fin_garantie'];
     $prix = $data['prix'];
