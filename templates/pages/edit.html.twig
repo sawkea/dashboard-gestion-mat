@@ -43,12 +43,14 @@
                     <!-- CATEGORIE -->
                     <div class="form-group col-md-7">
                         <label for="categorie">Catégorie</label>
-                        <select id="categorie" class="form-control" value="{{ categorie_id }}" name="categorie_id" required>
-                        <option value>Sélectionner la catégorie...</option>
-                        <option value="1">Electroménager</option>
-                        <option value="2">TV-HIFI</option>
-                        <option value="3">Bricolage</option>
-                        <option value="4">Voiture</option>
+                        <select id="categorie" class="form-control" value="{{ p.categorie }}" name="categorie_id" required>
+                            {% for p in resultat %}
+                                <option value="{{ p.categorie }}" disabled selected hidden>{{ p.categorie }}</option>
+                                <option value="1">Electroménager</option>
+                                <option value="2">TV-HIFI</option>
+                                <option value="3">Bricolage</option>
+                                <option value="4">Voiture</option>
+                            {% endfor %}   
                         </select>
                         <div class="invalid-feedback">
                             Veuillez sélectionner une catégorie
