@@ -10,7 +10,7 @@ require_once 'vendor/autoload.php';
 // }
 function categorie(){
     require('db.php');
-    $sql = 'SELECT nom FROM categorie';
+    $sql = "SELECT nom FROM categorie";
     $req = $dbh -> query($sql);
     return $req;
 }
