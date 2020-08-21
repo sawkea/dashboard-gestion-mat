@@ -16,15 +16,30 @@
             <div class="bg-color"><h2 class="mt-3 mb-5 text-center">{{ txttitle }}</h2></div>
             
             <form action="edit.php" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
-                <div>
-                        <label>Ticket - achat <span class="fas fa-receipt"></span></label>
-                        <input type="file" name="ticket">
+                <!-- TICKET ACHAT -->
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroupFileAddon01">{{ ticket }}</span>
                     </div>
-                    <div>
-                        <label>Manuel d'utilisation</label><span class="fas fa-file-alt" ></span></a>
-                        <input type="file" name="manuel_utilisation">
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                      <label class="custom-file-label" for="inputGroupFile01">Choisir un fichier</label>
                     </div>
+                </div>
+                
+                <!-- MANUEL UTILISATION -->
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroupFileAddon01">{{ manuel_utilisation }}</span>
+                    </div>
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                      <label class="custom-file-label" for="inputGroupFile01">Choisir un fichier</label>
+                    </div>
+                </div>
+
                 <div class="form-row">
+                    <!-- REFERENCE -->
                     <div class="form-group col-md-5">
                         <label for="reference">Réf</label>
                         <input type="text" class="form-control" name="reference" placeholder="Réf produit..." value="{{ reference }}" required>
@@ -32,6 +47,7 @@
                             Veuillez entrer un référence
                         </div>
                     </div>
+                    <!-- NOM DU PRODUIT -->
                     <div class="form-group col-md-7">
                         <label for="nom">Nom</label>
                         <input type="text" class="form-control" name="nom" placeholder="Nom du produit..." value="{{ nom }}" required>
@@ -44,7 +60,7 @@
                     <div class="form-group col-md-7">
                         <label for="categorie">Catégorie</label>
                         <select id="categorie" class="form-control" value="{{ p.categorie }}" name="categorie_id" required>
-                            {% for p in resultat %}
+                            {% for  in  %}
                                 <option value="{{ p.categorie }}" disabled selected hidden>{{ p.categorie }}</option>
                                 <option value="1">Electroménager</option>
                                 <option value="2">TV-HIFI</option>
@@ -65,6 +81,7 @@
                             Veuillez entrer un prix
                         </div>
                     </div>
+                    <!-- DATE ACHAT -->
                     <div class="form-group col-md-6">
                         <label for="date">Date d'achat</label>
                         <input type="date" class="form-control" name="date_achat" value="{{ date_achat }}" required>
@@ -72,7 +89,7 @@
                             Veuillez entrer une date d'achat
                         </div>
                     </div>
-                    <!-- DATE D'ACHAT -->
+                    <!-- DATE FIN DE GARANTIE -->
                     <div class="form-group col-md-6">
                         <label for="date">Date de fin de garantie</label>
                         <input type="date" class="form-control" name="fin_garantie" value="{{ fin_garantie }}" required>
@@ -109,6 +126,7 @@
                         Veuillez entrer une adresse
                     </div>
                 </div>
+                <!-- VILLE -->
                 <div class="form-row">
                 <div class="form-group col-md-8">
                     <label for="inputVille">Ville</label>
@@ -117,6 +135,7 @@
                         Veuillez entrer votre ville
                     </div>
                 </div>
+                <!-- CP -->
                 <div class="form-group col-md-4">
                     <label for="inputCP">CP</label>
                     <input type="text" class="form-control" id="inputCP" placeholder="Entrer le code postal..." name="cp" value="{{ cp }}">
@@ -134,7 +153,7 @@
                 </div>
             </div>
                 <input type="hidden" name="id" value="{{ id }}">
-            
+                <!-- BUTTON MODIFIER -->
                 <div class="d-flex justify-content-end"><button type="submit" class="btn btn-primary">{{ txtbtn }}</button></div>
             </form>
             
