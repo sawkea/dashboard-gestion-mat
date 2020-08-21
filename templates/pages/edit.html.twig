@@ -57,22 +57,29 @@
                     </div>
               
                     <!-- CATEGORIE -->
-                    <div class="form-group col-md-7">
+                    
+                    <div class="form-group col-md-12">
                         <label for="categorie">Catégorie</label>
-                        <select id="categorie" class="form-control" value="{{ categorie_id }}" name="categorie_id" required>
-                            {% for element in categorie %}
-                                {% if categorie_id == element.id %}
-                                <option value="{{ element.id }}" selected >{{ element.nom}}</option>
-                                {% else %}
-                                <option value="{{ element.id }}">{{ element.nom}}</option>
-                                {% endif %}
-                            {% endfor %}   
-                        </select>
-                        <div class="invalid-feedback">
-                            Veuillez sélectionner une catégorie
-                        </div>
+                        <div class="input-group ">
+                            
+                            <select id="categorie" class="form-control" value="{{ categorie_id }}" name="categorie_id" required>
+                                {% for element in categorie %}
+                                    {% if categorie_id == element.id %}
+                                    <option value="{{ element.id }}" selected >{{ element.nom}}</option>
+                                    {% else %}
+                                    <option value="{{ element.id }}">{{ element.nom}}</option>
+                                    {% endif %}
+                                {% endfor %}   
+                            </select>
+                            <div class="invalid-feedback">
+                                Veuillez sélectionner une catégorie
+                            </div>
+                            <div class="input-group-append ml-2 mt-1">
+                                <a href="add-categorie.php"><span class="fas fa-plus-circle"></span></a>
+                            </div>
+                          </div>
                     </div>
-                    <div class="col-md-1 add-categorie"><a href="add-categorie.php"><span class="fas fa-plus-circle"></span></a></div>
+                    
                     <!-- PRIX -->
                     <div class="form-group col-md-4">
                         <label for="prix">Prix</label>
@@ -82,7 +89,7 @@
                         </div>
                     </div>
                     <!-- DATE ACHAT -->
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label for="date">Date d'achat</label>
                         <input type="date" class="form-control" name="date_achat" value="{{ date_achat }}" required>
                         <div class="invalid-feedback">
@@ -90,7 +97,7 @@
                         </div>
                     </div>
                     <!-- DATE FIN DE GARANTIE -->
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label for="date">Date de fin de garantie</label>
                         <input type="date" class="form-control" name="fin_garantie" value="{{ fin_garantie }}" required>
                         <div class="invalid-feedback">
