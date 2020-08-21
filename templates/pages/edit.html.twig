@@ -18,26 +18,24 @@
             <form action="edit.php" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
                 <!-- TICKET ACHAT -->
                 <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroupFileAddon01">{{ ticket }}</span>
-                    </div>
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="ticket">
-                      <label class="custom-file-label" for="inputGroupFile01">Choisir un fichier</label>
+                      <input type="file" class="custom-file-input" id="inputGroupFile02">
+                      <label class="custom-file-label" for="inputGroupFile02">{{ ticket }}</label>
+                    </div>
+                    <div class="input-group-append">
                     </div>
                 </div>
                 
                 <!-- MANUEL UTILISATION -->
                 <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroupFileAddon01">{{ manuel_utilisation }}</span>
-                    </div>
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="manuel_utilisation">
-                      <label class="custom-file-label" for="inputGroupFile01">Choisir un fichier</label>
+                      <input type="file" class="custom-file-input" id="inputGroupFile02">
+                      <label class="custom-file-label" for="inputGroupFile02">{{ manuel_utilisation }}</label>
+                    </div>
+                    <div class="input-group-append">
                     </div>
                 </div>
-
+                
                 <div class="form-row">
                     <!-- REFERENCE -->
                     <div class="form-group col-md-5">
