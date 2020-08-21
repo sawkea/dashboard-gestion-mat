@@ -140,8 +140,8 @@ if(count($_POST)>0){
     //les champs en "null"
     $adresse = trim($_POST['adresse']);
     $ville = trim($_POST['ville']);
-    // $cp = trim($_POST['cp']);
-    // $url = trim($_POST['url']);
+    $cp = trim($_POST['cp']);
+    $url = trim($_POST['url']);
 
     if(isset($_POST['id']) && !empty($_POST['id'])){
         $id = htmlentities($_POST['id']);
