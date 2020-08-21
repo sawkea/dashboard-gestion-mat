@@ -28,6 +28,10 @@ body h2 {
   color: var(--color-first);
 }
 
+#off-hidden {
+  display: none;
+}
+
 .backg-login {
   background-color: var(--color-secondary);
   height: 100vh;
@@ -293,5 +297,31 @@ body h2 {
 .connexion-pseudo {
   font-weight: 700;
   color: var(--color-for);
+}
+
+@media (max-width: 767px) {
+  #m-queries-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    margin-top: 1rem;
+  }
+  #m-queries-header h1 {
+    margin-top: 0;
+  }
+  #m-queries-header #off-hidden {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  #btn-off {
+    display: none;
+  }
+  #btn-off-mobile {
+    color: #0d1925;
+  }
 }
 /*# sourceMappingURL=style.css.map */
