@@ -197,12 +197,7 @@ if(isset($_GET['id'])&& isset($_GET['edit'])){
 }else{
         $txttitle= "Ajout";
 }
-// function categorie(){
-//     require('db.php');
-//     $sql = 'SELECT nom FROM categorie';
-//     $req = $dbh -> query($sql);
-//     return $req;
-// }
+
 
 $loader = new \Twig\Loader\FilesystemLoader('templates');
 $twig = new \Twig\Environment($loader, [
@@ -230,7 +225,7 @@ echo $template->render(array(
     'url' => $url,
     'txtbtn' => $txtBtn,
     'txttitle' => $txttitle,
-    // 'categorie' => categorie()
+
 ));
 
 
