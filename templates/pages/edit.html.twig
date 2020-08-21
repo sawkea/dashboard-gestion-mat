@@ -59,17 +59,13 @@
                     <!-- CATEGORIE -->
                     <div class="form-group col-md-7">
                         <label for="categorie">Catégorie</label>
-                        <select id="categorie" class="form-control" value="{{ categorie }}" name="categorie" required>
-                            {# {% for categorie_id in categorie %} #}
-                                <option value="{{ categorie }}">{{ categorie_id }}</option>
-                                <option value="1">Electroménager</option>
-                                <option value="2">TV-HIFI</option>
-                                <option value="3">Bricolage</option>
-                                <option value="4">Voiture</option>
-                            {# {% endfor %}    #}
                         <select id="categorie" class="form-control" value="{{ categorie_id }}" name="categorie_id" required>
-                            {% for categorie in categories %}
-                                <option value="{{ categorie }}">{{ categorie.nom}}</option>
+                            {% for element in categorie %}
+                                {% if categorie_id == element.id %}
+                                <option value="{{ element.id }}" selected >{{ element.nom}}</option>
+                                {% else %}
+                                <option value="{{ element.id }}">{{ element.nom}}</option>
+                                {% endif %}
                             {% endfor %}   
                         </select>
                         <div class="invalid-feedback">
