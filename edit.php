@@ -187,6 +187,18 @@ if(count($_POST)>0){
 
      }
 }
+// Categorie Essai Lisa (base apgit33)
+// $query = 'SELECT nom FROM categorie';
+// $sth = $dbh->prepare($query);
+// $sth->execute();
+// $categorie = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+// $template = $twig->load('edit.html.twig');
+// echo $template->render([
+//     'categorie' => $categorie
+// ]);
+
+
 if(isset($_GET['id'])&& isset($_GET['edit'])){
     $txtBtn = "Modifier";
 }else{
@@ -203,7 +215,6 @@ $loader = new \Twig\Loader\FilesystemLoader('templates');
 $twig = new \Twig\Environment($loader, [
     'cache' => false,
 ]);
-
 
 
 
