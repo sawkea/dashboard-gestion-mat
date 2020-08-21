@@ -4,14 +4,25 @@
     
 {% block content %}
     <div class="container">
-        <div class="container d-flex justify-content-center mt-5 mb-5"><h1><img src="medias/logo-dgma.png" alt="Logo DGMA" width="335" height="100"></h1></div>
+        
+        <div class="container d-flex justify-content-center mt-5 mb-5">
+            <h1><img src="medias/logo-dgma.png" alt="Logo DGMA" width="335" height="100"></h1>
+        </div>
+        <div id="m-queries-header">
+            <div id="off-hidden" class="btn-header">
+                <!-- Link off for version mobile-->
+                <a href='deconnexion.php'><span id="btn-off-mobile" class="fas fa-power-off"></span></a>
+            </div>
+        </div>
         <div class='connexion-pseudo mb-4 ml-3'><br>Bienvenue<span class='pseudo'> {{ pseudo }} </span>, vous êtes connectés !</div>
         <div class="d-flex justify-content-between align-items-center">
             
+            
             <h2 class="mb-4">Listing des achats de matériels</h2>
+            
             <div>
                 <a href="edit.php"><span class="fas fa-plus-circle"></span></a>
-                <a href='deconnexion.php'><span class="fas fa-power-off"></span></a>
+                <a href='deconnexion.php'><span id="btn-off" class="fas fa-power-off"></span></a>
             </div>
         </div>
         <!-- Listing of the dashboard -->

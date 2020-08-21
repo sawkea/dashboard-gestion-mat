@@ -25,6 +25,9 @@ body{
 .fas:hover, .far:hover{
     color: var(--color-first);
 }
+#off-hidden {
+    display: none;
+  }
 
 // Form-login
 .backg-login{
@@ -273,4 +276,27 @@ body{
 .connexion-pseudo{
     font-weight: 700;
     color: var(--color-for)
+}
+
+// MEDIAS QUERIES
+@media (max-width: 767px) {
+    
+    #m-queries-header{
+        display: flex;
+        justify-content: flex-end;
+        
+        margin-top: 1rem;
+        h1{ margin-top: 0;}
+        //off
+        #off-hidden{
+        display: flex;
+        
+        }
+    }
+    #btn-off{
+        display: none;
+    }
+    #btn-off-mobile{
+        color: #0d1925; 
+    }  
 }
