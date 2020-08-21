@@ -192,8 +192,7 @@ $query = 'SELECT id, nom FROM categorie';
 $sth = $dbh->prepare($query);
 $sth->execute();
 $categorie = $sth->fetchAll(PDO::FETCH_ASSOC);
-var_dump($categorie);
-var_dump($query);
+
 
 if(isset($_GET['id'])&& isset($_GET['edit'])){
     $txtBtn = "Modifier";
