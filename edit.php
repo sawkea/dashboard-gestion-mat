@@ -187,6 +187,14 @@ if(count($_POST)>0){
 
      }
 }
+// Categorie 
+$query = 'SELECT id, nom FROM categorie';
+$sth = $dbh->prepare($query);
+$sth->execute();
+$categorie = $sth->fetchAll(PDO::FETCH_ASSOC);
+var_dump($categorie);
+var_dump($query);
+
 if(isset($_GET['id'])&& isset($_GET['edit'])){
     $txtBtn = "Modifier";
 }else{
@@ -203,7 +211,6 @@ $loader = new \Twig\Loader\FilesystemLoader('templates');
 $twig = new \Twig\Environment($loader, [
     'cache' => false,
 ]);
-
 
 
 
@@ -225,6 +232,7 @@ echo $template->render(array(
     'url' => $url,
     'txtbtn' => $txtBtn,
     'txttitle' => $txttitle,
+    'categorie' => $categorie
 
 ));
 
