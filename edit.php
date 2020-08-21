@@ -155,7 +155,7 @@ if(count($_POST)>0){
             $sql = "UPDATE produit SET nom=:nom, reference=:reference, categorie_id=:categorie_id, date_achat=:date_achat, fin_garantie=:fin_garantie, prix=:prix, conseils_entretien=:conseils_entretien, ticket=:ticket, manuel_utilisation=:manuel_utilisation,  adresse=:adresse, ville=:ville, cp=:cp, url=:url WHERE id=:id";
         }else{
             $sql = "INSERT INTO produit(nom, reference, categorie_id, date_achat, fin_garantie, prix, conseils_entretien, ticket, manuel_utilisation, adresse, ville, cp, url) VALUES(:nom, :reference, :categorie_id, :date_achat, :fin_garantie, :prix, :conseils_entretien, :ticket, :manuel_utilisation, :adresse, :ville, :cp, :url)";
-            var_dump($sql);
+            //var_dump($sql);
         }
 
         $sth = $dbh->prepare($sql);

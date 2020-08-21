@@ -10,8 +10,19 @@ if(empty($_SESSION['pseudo'])){
 }
 $new_categorie='';
 $error = false;
-
+var_dump($_POST);
 if(isset($_POST['new-categorie']) && !empty($_POST['new-categorie'])){
+    if(strlen(trim($_POST['new-categorie'])) !== 0){ 
+        $new_categorie = trim($_POST['new-categorie']);
+        $sql = "INSERT INTO categorie (nom) VALUES (:new_categorie)";
+        $sth = $dbh->prepare($sql);
+        $sth->bindParam(':new_categorie', $new_categorie, PDO::PARAM_STR);
+        $sth->execute();
+    
+        var_dump($sql);
+    }else{
+        $error= true;
+    }
 
 }
 
@@ -21,4 +32,6 @@ $twig = new \Twig\Environment($loader, [
 ]);
 
 $template = $twig->load('pages/add-categorie.html.twig');
-echo $template->render();
+echo $template->render(array(
+    'new-categorie' => $new_categorie
+));
