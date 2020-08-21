@@ -4,7 +4,7 @@ ini_set("display_errors", 1);
 
 session_start(); 
 require_once 'vendor/autoload.php';
-require_once('db.php');
+require('db.php');
 if(empty($_SESSION['pseudo'])){
     header('Location: index.php');
 }
@@ -197,12 +197,12 @@ if(isset($_GET['id'])&& isset($_GET['edit'])){
 }else{
         $txttitle= "Ajout";
 }
-function categories(){
-
-    $sql = 'SELECT nom FROM categorie';
-    $req = $bdd -> query($sql);
-    return $req;
-}
+// function categorie(){
+//     require('db.php');
+//     $sql = 'SELECT nom FROM categorie';
+//     $req = $dbh -> query($sql);
+//     return $req;
+// }
 
 $loader = new \Twig\Loader\FilesystemLoader('templates');
 $twig = new \Twig\Environment($loader, [
@@ -230,8 +230,7 @@ echo $template->render(array(
     'url' => $url,
     'txtbtn' => $txtBtn,
     'txttitle' => $txttitle,
-    'categorie' => categorie()
-  
+    // 'categorie' => categorie()
 ));
 
 
