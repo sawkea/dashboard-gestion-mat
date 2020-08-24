@@ -10,7 +10,6 @@ if(empty($_SESSION['pseudo'])){
 }
 $new_categorie='';
 $error = false;
-var_dump($_POST);
 if(isset($_POST['new-categorie']) && !empty($_POST['new-categorie'])){
     if(strlen(trim($_POST['new-categorie'])) !== 0){ 
         $new_categorie = trim($_POST['new-categorie']);
@@ -19,9 +18,12 @@ if(isset($_POST['new-categorie']) && !empty($_POST['new-categorie'])){
         $sth->bindParam(':new_categorie', $new_categorie, PDO::PARAM_STR);
         $sth->execute();
     
-        var_dump($sql);
+        header('Location: listing.php');
+
     }else{
         $error= true;
+        header('Location: listing.php');
+
     }
 
 }
