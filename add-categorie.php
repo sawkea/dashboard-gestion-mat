@@ -18,11 +18,11 @@ if(isset($_POST['new-categorie']) && !empty($_POST['new-categorie'])){
         $sth->bindParam(':new_categorie', $new_categorie, PDO::PARAM_STR);
         $sth->execute();
     
-        header('Location: listing.php');
+        header('Location: edit.php');
 
     }else{
         $error= true;
-        header('Location: listing.php');
+        header('Location: edit.php');
 
     }
 
