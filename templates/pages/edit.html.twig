@@ -29,8 +29,8 @@
                 <!-- MANUEL UTILISATION -->
                 <div class="input-group mb-3">
                     <div class="custom-file">
-                      <input name="manuel_utilisation" type="file" class="custom-file-input" id="inputGroupFile02">
-                      <label class="custom-file-label" for="inputGroupFile02">{{ manuel_utilisation }}</label>
+                      <input type="file" class="custom-file-input" id="inputGroupFile02" name="manuel_utilisation" aria-describedby="inputGroupFileAddon02" onchange="labelManuel(this.files)">
+                      <label class="custom-file-label" for="inputGroupFile02" id="manuel">{{ manuel_utilisation }}</label>
                     </div>
                     <div class="input-group-append">
                     </div>
