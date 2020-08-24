@@ -4,6 +4,7 @@
     
 {% block content %}
     <div class="container">
+       
         <div class="d-flex justify-content-between align-items-end mt-5 mb-5">
             <h1><img src="medias/logo-dgma.png" alt="Logo DGMA" width="335" height="100"></h1>
         </div>
@@ -19,17 +20,16 @@
                 <!-- TICKET ACHAT -->
                 <div class="input-group mb-3">
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="inputGroupFile02">
-                      <label class="custom-file-label" for="inputGroupFile02">{{ ticket }}</label>
+                      <input type="file" class="custom-file-input" id="inputGroupFile01" name="ticket" aria-describedby="inputGroupFileAddon01" onchange="labelFile(this.files)">
+                      <label class="custom-file-label" for="inputGroupFile01" id="ticket">{{ticket}}</label>
                     </div>
                     <div class="input-group-append">
                     </div>
                 </div>
-                
                 <!-- MANUEL UTILISATION -->
                 <div class="input-group mb-3">
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="inputGroupFile02">
+                      <input type="file" class="custom-file-input" id="inputGroupFile02" name="manuel_utilisation" aria-describedby="inputGroupFileAddon02">
                       <label class="custom-file-label" for="inputGroupFile02">{{ manuel_utilisation }}</label>
                     </div>
                     <div class="input-group-append">
@@ -168,6 +168,7 @@
         {% block javascript %}
             <script src="js/script-valid.js"></script>
             <script src="js/script-edit.js"></script>
+            <script src="https://kit.fontawesome.com/d5dcbc8efb.js" crossorigin="anonymous"></script>
         {% endblock javascript %}
 
 

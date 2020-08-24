@@ -56,5 +56,3 @@ btnYes.addEventListener('click', function(){
         location.href = elementToDelete.getAttribute('href');
     }
 });
-
-

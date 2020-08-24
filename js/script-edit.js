@@ -28,4 +28,11 @@ selectElem.addEventListener('change', function() {
     }
 });
 
+// tentative label formulaire labelFile
+function labelFile(file){
+  const txtLabelfile = document.getElementById('ticket');
+  txtLabelfile.innerText = file[0].name;
+
+
+}
 
